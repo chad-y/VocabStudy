@@ -87,7 +87,10 @@ parentBtn.addEventListener("click", () => {
 
 // ---------- Load decks ----------
 async function loadBuiltinDecks() {
-  const res = await fetch("./decks.json", { cache: "no-store" });
+  // old const res = await fetch("./decks.json", { cache: "no-store" });
+  const BUILD = "2026-02-03-11.0"; // change this whenever you update decks
+  const res = await fetch(`./decks.json?v=${BUILD}`, { cache: "no-store" });
+
   return await res.json();
 }
 
