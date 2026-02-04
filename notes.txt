@@ -1,4 +1,4 @@
-In app.js need to change line 91 everytime you upload a new deck
+In sw.js need to change line 5 everytime you make a UI change
 
 
 

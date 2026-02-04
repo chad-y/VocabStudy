@@ -1,12 +1,39 @@
+/* Vocab Study - clean build
+   - Imported decks: saved in localStorage
+   - Built-in decks (decks.json): fetched online, cached as "last known good"
+   - Offline: uses last known good built-in decks + imported decks
+   - Service worker caches app shell only (NOT decks.json)
+*/
+
+// ---------- LocalStorage keys ----------
+const LS_IMPORTED = "vocabStudyImportedDecks_v2";
+const LS_LAST_BUILTIN = "vocabStudyLastBuiltinDecks_v2";
+const LS_LAST_BUILTIN_AT = "vocabStudyLastBuiltinLoadedAt_v2";
+
 // ---------- Storage helpers ----------
-const LS_IMPORTED = "vocabStudyImportedDecks_v1";
+function safeJSONParse(s, fallback) {
+  try { return JSON.parse(s); } catch { return fallback; }
+}
 
 function getImportedDecks() {
-  try { return JSON.parse(localStorage.getItem(LS_IMPORTED)) || []; }
-  catch { return []; }
+  return safeJSONParse(localStorage.getItem(LS_IMPORTED), []);
 }
+
 function setImportedDecks(decks) {
   localStorage.setItem(LS_IMPORTED, JSON.stringify(decks));
+}
+
+function setLastBuiltinDecks(decks) {
+  localStorage.setItem(LS_LAST_BUILTIN, JSON.stringify(decks));
+  localStorage.setItem(LS_LAST_BUILTIN_AT, new Date().toISOString());
+}
+
+function getLastBuiltinDecks() {
+  return safeJSONParse(localStorage.getItem(LS_LAST_BUILTIN), []);
+}
+
+function getLastBuiltinAt() {
+  return localStorage.getItem(LS_LAST_BUILTIN_AT);
 }
 
 // ---------- App state ----------
@@ -39,6 +66,7 @@ const views = {
 const titleEl = document.getElementById("title");
 const backBtn = document.getElementById("backBtn");
 const parentBtn = document.getElementById("parentBtn");
+const statusLine = document.getElementById("statusLine");
 
 const deckList = document.getElementById("deckList");
 const deckTitle = document.getElementById("deckTitle");
@@ -61,51 +89,14 @@ const nextQuestionBtn = document.getElementById("nextQuestionBtn");
 
 const fileInput = document.getElementById("fileInput");
 const importedList = document.getElementById("importedList");
+const resetImportedBtn = document.getElementById("resetImportedBtn");
 
-// ---------- Navigation ----------
+// ---------- Navigation helpers ----------
 function show(viewName, headerTitle) {
   Object.values(views).forEach(v => v.classList.add("hidden"));
   views[viewName].classList.remove("hidden");
   titleEl.textContent = headerTitle || "Vocab Study";
-
-  // back button rules
   backBtn.classList.toggle("hidden", viewName === "home");
-}
-
-backBtn.addEventListener("click", () => {
-  // simple back stack:
-  if (views.flash.classList.contains("hidden") === false) showDeck();
-  else if (views.quiz.classList.contains("hidden") === false) showDeck();
-  else if (views.parent.classList.contains("hidden") === false) showHome();
-  else if (views.deck.classList.contains("hidden") === false) showHome();
-});
-
-parentBtn.addEventListener("click", () => {
-  renderImportedList();
-  show("parent", "Parent Mode");
-});
-
-// ---------- Load decks ----------
-async function loadBuiltinDecks() {
-  // old const res = await fetch("./decks.json", { cache: "no-store" });
-  const BUILD = "2026-02-03-11.0"; // change this whenever you update decks
-  const res = await fetch(`./decks.json?v=${BUILD}`, { cache: "no-store" });
-
-  return await res.json();
-}
-
-function rebuildDeckList() {
-  const imported = getImportedDecks();
-  decks = [...imported, ...builtinDecks];
-
-  deckList.innerHTML = "";
-  decks.forEach(d => {
-    const btn = document.createElement("button");
-    btn.className = "choiceBtn";
-    btn.textContent = d.title;
-    btn.onclick = () => { currentDeck = d; showDeck(); };
-    deckList.appendChild(btn);
-  });
 }
 
 function showHome() {
@@ -119,9 +110,80 @@ function showDeck() {
   show("deck", "Deck");
 }
 
+// Back button logic
+backBtn.addEventListener("click", () => {
+  if (!views.flash.classList.contains("hidden")) showDeck();
+  else if (!views.quiz.classList.contains("hidden")) showDeck();
+  else if (!views.parent.classList.contains("hidden")) showHome();
+  else if (!views.deck.classList.contains("hidden")) showHome();
+});
+
+// Parent button
+parentBtn.addEventListener("click", () => {
+  renderImportedList();
+  show("parent", "Parent Mode");
+});
+
+// ---------- Deck loading ----------
+async function loadBuiltinDecks() {
+  // Try online first; if that fails, use last-known-good from localStorage
+  try {
+    const res = await fetch("./decks.json", { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!Array.isArray(data)) throw new Error("decks.json must be an array of decks");
+    setLastBuiltinDecks(data);
+    return { decks: data, source: "online" };
+  } catch {
+    const cached = getLastBuiltinDecks();
+    return { decks: cached, source: cached.length ? "offline-cache" : "empty" };
+  }
+}
+
+function rebuildDeckList() {
+  const imported = getImportedDecks();
+  decks = [...imported, ...builtinDecks];
+
+  deckList.innerHTML = "";
+  if (decks.length === 0) {
+    const p = document.createElement("p");
+    p.className = "muted";
+    p.textContent = "No decks available yet. (Try importing a deck in Parent Mode.)";
+    deckList.appendChild(p);
+    return;
+  }
+
+  decks.forEach(d => {
+    const btn = document.createElement("button");
+    btn.className = "choiceBtn";
+    btn.textContent = d.title;
+    btn.onclick = () => { currentDeck = d; showDeck(); };
+    deckList.appendChild(btn);
+  });
+}
+
+function updateStatusLine(source) {
+  const at = getLastBuiltinAt();
+  const importedCount = getImportedDecks().length;
+  let msg = "";
+
+  if (source === "online") msg = "Loaded latest built-in decks (online).";
+  else if (source === "offline-cache") msg = "Offline: using last saved built-in decks.";
+  else msg = "No built-in decks loaded yet.";
+
+  if (at) {
+    const short = new Date(at).toLocaleString();
+    msg += ` Last built-in update: ${short}.`;
+  }
+  if (importedCount) msg += ` Imported decks on device: ${importedCount}.`;
+
+  statusLine.textContent = msg;
+}
+
 // ---------- Flashcards ----------
 function startFlashcards() {
-  flashOrder = [...currentDeck.cards];
+  const cards = currentDeck.cards || [];
+  flashOrder = [...cards];
   if (shuffleOn) flashOrder.sort(() => Math.random() - 0.5);
   flashIndex = 0;
   flashFlipped = false;
@@ -131,8 +193,15 @@ function startFlashcards() {
 
 function renderFlashcard() {
   const total = flashOrder.length;
-  const c = flashOrder[flashIndex];
+  if (total === 0) {
+    flashCounter.textContent = "No flashcards in this deck.";
+    flashCard.textContent = "No cards";
+    prevCardBtn.disabled = true;
+    nextCardBtn.disabled = true;
+    return;
+  }
 
+  const c = flashOrder[flashIndex];
   flashCounter.textContent = `${flashIndex + 1} / ${total}  •  Shuffle: ${shuffleOn ? "ON" : "OFF"}`;
   flashCard.textContent = flashFlipped ? c.meaning : c.word;
 
@@ -158,14 +227,33 @@ nextCardBtn.addEventListener("click", () => {
 });
 
 // ---------- Quiz ----------
+function getQuizSource(mode) {
+  if (mode === "def") return currentDeck.definitionMCQs || [];
+  if (mode === "use") return currentDeck.usageMCQs || [];
+  return [];
+}
+
 function startQuiz(mode) {
-  quizMode = mode; // "def" or "use"
-  const src = mode === "def" ? (currentDeck.definitionMCQs || []) : (currentDeck.usageMCQs || []);
+  quizMode = mode;
+  const src = getQuizSource(mode);
   quizOrder = [...src];
   if (shuffleOn) quizOrder.sort(() => Math.random() - 0.5);
 
   quizIndex = 0;
   quizScore = 0;
+
+  if (quizOrder.length === 0) {
+    // Show a simple "no questions" screen
+    quizCounter.textContent = "";
+    quizScoreEl.textContent = "";
+    quizPrompt.textContent = "No questions in this deck yet.";
+    quizChoices.innerHTML = "";
+    quizExplanation.classList.add("hidden");
+    nextQuestionBtn.disabled = true;
+    show("quiz", mode === "def" ? "Definition Quiz" : "Usage Quiz");
+    return;
+  }
+
   renderQuizQuestion();
   show("quiz", mode === "def" ? "Definition Quiz" : "Usage Quiz");
 }
@@ -174,13 +262,14 @@ function renderQuizQuestion() {
   const q = quizOrder[quizIndex];
   quizLocked = false;
   nextQuestionBtn.disabled = true;
+
   quizExplanation.classList.add("hidden");
   quizExplanation.textContent = "";
 
   quizCounter.textContent = `Question ${quizIndex + 1} / ${quizOrder.length}`;
   quizScoreEl.textContent = `Score: ${quizScore}`;
 
-  const promptText = (quizMode === "def") ? q.question : q.prompt;
+  const promptText = quizMode === "def" ? q.question : q.prompt;
   quizPrompt.textContent = promptText;
 
   quizChoices.innerHTML = "";
@@ -188,12 +277,12 @@ function renderQuizQuestion() {
     const btn = document.createElement("button");
     btn.className = "choiceBtn";
     btn.textContent = choice;
-    btn.onclick = () => handleAnswer(idx, btn);
+    btn.onclick = () => handleAnswer(idx);
     quizChoices.appendChild(btn);
   });
 }
 
-function handleAnswer(selectedIndex, clickedBtn) {
+function handleAnswer(selectedIndex) {
   if (quizLocked) return;
   quizLocked = true;
 
@@ -218,16 +307,18 @@ function handleAnswer(selectedIndex, clickedBtn) {
 }
 
 nextQuestionBtn.addEventListener("click", () => {
+  if (quizOrder.length === 0) return;
+
   if (quizIndex < quizOrder.length - 1) {
     quizIndex += 1;
     renderQuizQuestion();
   } else {
-    // restart
+    // restart same mode
     startQuiz(quizMode);
   }
 });
 
-// ---------- Parent Mode import ----------
+// ---------- Parent Mode: import ----------
 fileInput.addEventListener("change", async (e) => {
   const file = e.target.files?.[0];
   if (!file) return;
@@ -235,12 +326,19 @@ fileInput.addEventListener("change", async (e) => {
   try {
     const text = await file.text();
     const parsed = JSON.parse(text);
-
-    // Accept either a single deck object or an array of decks
     const newDecks = Array.isArray(parsed) ? parsed : [parsed];
 
+    // very light validation
+    newDecks.forEach(d => {
+      if (!d || typeof d.id !== "string" || typeof d.title !== "string") {
+        throw new Error("Each deck must have id and title");
+      }
+      if (!Array.isArray(d.cards)) d.cards = [];
+      if (!Array.isArray(d.definitionMCQs)) d.definitionMCQs = [];
+      if (!Array.isArray(d.usageMCQs)) d.usageMCQs = [];
+    });
+
     const imported = getImportedDecks();
-    // replace if same id exists
     newDecks.forEach(nd => {
       const idx = imported.findIndex(d => d.id === nd.id);
       if (idx >= 0) imported[idx] = nd;
@@ -251,7 +349,7 @@ fileInput.addEventListener("change", async (e) => {
     renderImportedList();
     rebuildDeckList();
     alert("Imported deck successfully.");
-  } catch (err) {
+  } catch {
     alert("Import failed. Make sure the file is valid JSON in the expected format.");
   } finally {
     fileInput.value = "";
@@ -279,6 +377,7 @@ function renderImportedList() {
 
     const del = document.createElement("button");
     del.className = "link";
+    del.type = "button";
     del.textContent = "Delete";
     del.onclick = () => {
       const next = getImportedDecks().filter(x => x.id !== d.id);
@@ -293,16 +392,25 @@ function renderImportedList() {
   });
 }
 
+resetImportedBtn.addEventListener("click", () => {
+  const ok = confirm("Delete ALL imported decks on this device?");
+  if (!ok) return;
+  setImportedDecks([]);
+  renderImportedList();
+  rebuildDeckList();
+});
+
 // ---------- Wire up buttons ----------
 shuffleToggle.addEventListener("change", () => { shuffleOn = shuffleToggle.checked; });
-
 flashBtn.addEventListener("click", startFlashcards);
 defQuizBtn.addEventListener("click", () => startQuiz("def"));
 useQuizBtn.addEventListener("click", () => startQuiz("use"));
 
 // ---------- Boot ----------
 (async function init() {
-  builtinDecks = await loadBuiltinDecks();
+  const result = await loadBuiltinDecks();
+  builtinDecks = result.decks;
   rebuildDeckList();
+  updateStatusLine(result.source);
   showHome();
 })();

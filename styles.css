@@ -9,6 +9,7 @@
 }
 
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial;
@@ -27,16 +28,13 @@ body {
   top: 0;
 }
 
-.topbar h1 {
-  font-size: 18px;
-  margin: 0;
-}
+.topbar h1 { font-size: 18px; margin: 0; }
 
 .link {
   background: none;
   border: none;
   color: var(--blue);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 16px;
 }
 
@@ -52,13 +50,7 @@ body {
 
 .list { display: grid; gap: 10px; margin-top: 10px; }
 .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 12px;
-}
+.grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
 
 .btn {
   padding: 14px 14px;
@@ -66,7 +58,7 @@ body {
   border: none;
   background: var(--blue);
   color: #fff;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 16px;
 }
 
@@ -81,7 +73,7 @@ body {
 .muted { color: var(--muted); }
 .small { font-size: 12px; }
 
-.toggle { display:flex; align-items:center; gap:10px; font-weight: 600; color: var(--muted); }
+.toggle { display:flex; align-items:center; gap:10px; font-weight: 700; color: var(--muted); }
 
 .flashcard {
   width: 100%;
@@ -93,7 +85,7 @@ body {
   box-shadow: var(--shadow);
   padding: 18px;
   font-size: 34px;
-  font-weight: 800;
+  font-weight: 900;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -114,5 +106,14 @@ hr { border: none; height: 1px; background: rgba(15,23,42,.10); margin: 14px 0; 
   line-height: 1.25;
 }
 
-.choiceBtn.correct { border-color: rgba(16,185,129,.6); }
-.choiceBtn.wrong { border-color: rgba(239,68,68,.6); }
+.choiceBtn.correct {
+  border: 3px solid rgba(16, 185, 129, 0.9);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.choiceBtn.wrong {
+  border: 3px solid rgba(239, 68, 68, 0.9);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.hidden { display: none; }

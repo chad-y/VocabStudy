@@ -4,28 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0b5fff" />
+
   <link rel="manifest" href="manifest.json" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
   <link rel="stylesheet" href="styles.css" />
+
   <title>Vocab Study</title>
 </head>
 <body>
   <header class="topbar">
-    <button id="backBtn" class="link hidden">← Back</button>
+    <button id="backBtn" class="link hidden" type="button">← Back</button>
     <h1 id="title">Vocab Study</h1>
-    <button id="parentBtn" class="link">Parent</button>
+    <button id="parentBtn" class="link" type="button">Parent</button>
   </header>
 
-  <main id="app" class="container">
-    <!-- Home -->
+  <main class="container">
+    <!-- HOME -->
     <section id="homeView" class="view">
       <div class="card">
         <h2>Decks</h2>
+        <p id="statusLine" class="muted small"></p>
         <div id="deckList" class="list"></div>
       </div>
     </section>
 
-    <!-- Deck Menu -->
+    <!-- DECK MENU -->
     <section id="deckView" class="view hidden">
       <div class="card">
         <h2 id="deckTitle">Deck</h2>
@@ -37,28 +40,28 @@
         </div>
 
         <div class="grid">
-          <button class="btn" id="flashBtn">Flashcards</button>
-          <button class="btn" id="defQuizBtn">Definition Quiz</button>
-          <button class="btn" id="useQuizBtn">Usage Quiz</button>
+          <button class="btn" id="flashBtn" type="button">Flashcards</button>
+          <button class="btn" id="defQuizBtn" type="button">Definition Quiz</button>
+          <button class="btn" id="useQuizBtn" type="button">Usage Quiz</button>
         </div>
       </div>
     </section>
 
-    <!-- Flashcards -->
+    <!-- FLASHCARDS -->
     <section id="flashView" class="view hidden">
       <div class="row">
         <span id="flashCounter" class="muted"></span>
       </div>
 
-      <button id="flashCard" class="flashcard" aria-label="Tap to flip"></button>
+      <button id="flashCard" class="flashcard" type="button" aria-label="Tap to flip"></button>
 
       <div class="nav">
-        <button class="btn ghost" id="prevCardBtn">Prev</button>
-        <button class="btn ghost" id="nextCardBtn">Next</button>
+        <button class="btn ghost" id="prevCardBtn" type="button">Prev</button>
+        <button class="btn ghost" id="nextCardBtn" type="button">Next</button>
       </div>
     </section>
 
-    <!-- Quiz -->
+    <!-- QUIZ -->
     <section id="quizView" class="view hidden">
       <div class="row">
         <span id="quizCounter" class="muted"></span>
@@ -72,15 +75,15 @@
       </div>
 
       <div class="nav">
-        <button class="btn ghost" id="nextQuestionBtn" disabled>Next</button>
+        <button class="btn ghost" id="nextQuestionBtn" type="button" disabled>Next</button>
       </div>
     </section>
 
-    <!-- Parent Mode -->
+    <!-- PARENT MODE -->
     <section id="parentView" class="view hidden">
       <div class="card">
         <h2>Parent Mode</h2>
-        <p class="muted">Import a deck JSON file. It will be saved on this iPhone.</p>
+        <p class="muted">Import a deck JSON file. Imported decks are saved on this device.</p>
 
         <div class="row">
           <input type="file" id="fileInput" accept="application/json" />
@@ -91,8 +94,12 @@
         <h3>Imported Decks</h3>
         <div id="importedList" class="list"></div>
 
-        <p class="muted small">
-          Tip: If you reinstall Safari data or switch devices, you may need to re-import.
+        <hr />
+
+        <button id="resetImportedBtn" class="btn ghost" type="button">Delete All Imported Decks</button>
+
+        <p class="muted small" style="margin-top:12px;">
+          Offline behavior: the app shows the last successfully loaded built-in decks, plus imported decks.
         </p>
       </div>
     </section>
@@ -100,7 +107,6 @@
 
   <script src="app.js"></script>
   <script>
-    // Register offline support
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js').catch(() => {});
     }
