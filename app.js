@@ -16,12 +16,17 @@ function safeJSONParse(s, fallback) {
 }
 
 function getImportedDecks() {
-  return safeJSONParse(localStorage.getItem(LS_IMPORTED), []);
+  const v = safeJSONParse(localStorage.getItem(LS_IMPORTED), []);
+  return Array.isArray(v) ? v : [];
 }
 
 function setImportedDecks(decks) {
-  localStorage.setItem(LS_IMPORTED, JSON.stringify(decks));
+  localStorage.setItem(
+    LS_IMPORTED,
+    JSON.stringify(Array.isArray(decks) ? decks : [])
+  );
 }
+
 
 function setLastBuiltinDecks(decks) {
   localStorage.setItem(LS_LAST_BUILTIN, JSON.stringify(decks));
