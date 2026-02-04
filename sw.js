@@ -1,4 +1,4 @@
-const CACHE = "vocab-study-v1";
+const CACHE = "vocab-study-v11";
 const ASSETS = [
   "./",
   "./index.html",
