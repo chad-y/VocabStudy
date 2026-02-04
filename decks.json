@@ -1,0 +1,24 @@
+[
+  {
+    "id": "vocab-set-1",
+    "title": "Vocab Set 1 (Auspicious–Vigilant)",
+    "cards": [
+      { "id": "auspicious", "word": "auspicious", "meaning": "Showing signs that promise success" },
+      { "id": "introspection", "word": "introspection", "meaning": "Examination of one’s thoughts and feelings" },
+      { "id": "retrospect", "word": "retrospect", "meaning": "Looking at past times or events" },
+      { "id": "specimen", "word": "specimen", "meaning": "A single thing taken as part of a whole" },
+      { "id": "specter", "word": "specter", "meaning": "Ghost or haunting fear of future trouble" },
+      { "id": "spectrum", "word": "spectrum", "meaning": "Bands of colors/bands of soundwaves or wide range of ideas" },
+      { "id": "speculate", "word": "speculate", "meaning": "To form opinions without knowledge or to buy/sell something" },
+      { "id": "surveillance", "word": "surveillance", "meaning": "Close observation of a suspect" },
+      { "id": "vigil", "word": "vigil", "meaning": "To keep watch or to pray" },
+      { "id": "vigilant", "word": "vigilant", "meaning": "On the lookout for danger" }
+    ],
+    "definitionMCQs": [
+      { "id":"def-auspicious","question":"What does “auspicious” mean?","choices":["showing signs that promise success","hard to understand","likely to cause an argument","full of loud noise"],"correctIndex":0,"explanation":"Auspicious suggests a positive outcome." }
+    ],
+    "usageMCQs": [
+      { "id":"use-auspicious","prompt":"Pick the sentence that uses “auspicious” correctly.","word":"auspicious","choices":["The clear skies on the day of the tournament felt like an auspicious sign.","He auspiciously his backpack into the locker before class.","The cafeteria served an auspicious, which tasted like pizza.","She was auspicious at math because she forgot her calculator."],"correctIndex":0,"explanation":"Auspicious describes signs that something is likely to succeed." }
+    ]
+  }
+]

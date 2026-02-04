@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="180"
+   height="180"
+   viewBox="0 0 180 180"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="icon.svg"
+   inkscape:export-filename="icon.png"
+   inkscape:export-xdpi="273.06668"
+   inkscape:export-ydpi="273.06668"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#0000ff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="4.4833333"
+     inkscape:cx="88.884758"
+     inkscape:cy="89.888476"
+     inkscape:window-width="1599"
+     inkscape:window-height="1208"
+     inkscape:window-x="2091"
+     inkscape:window-y="540"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     inkscape:export-bgcolor="#0000ffff" />
+  <defs
+     id="defs1">
+    <rect
+       x="74.72119"
+       y="41.486989"
+       width="64.01487"
+       height="54.423792"
+       id="rect2" />
+    <rect
+       x="35.241636"
+       y="57.32342"
+       width="110.40892"
+       height="66.022305"
+       id="rect1" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       id="text1"
+       style="writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);display:inline;fill:#0000ff;stroke:#ff0000;stroke-width:30" />
+    <text
+       xml:space="preserve"
+       id="text2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:53.3333px;font-family:'Arial Rounded MT Bold';-inkscape-font-specification:'Arial Rounded MT Bold, ';writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);display:inline;fill:#0000ff;stroke:#ff0000;stroke-width:30"><tspan
+         x="74.720703"
+         y="143.9719"
+         id="tspan4"><tspan
+           dx="0 36.692688 28.906235"
+           id="tspan1">Vse</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:74.6667px;font-family:CiscoSansTT;-inkscape-font-specification:CiscoSansTT;writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="31.921846"
+       y="116.32293"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         x="31.921846"
+         y="116.32293"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:74.6667px;font-family:'Snap ITC';-inkscape-font-specification:'Snap ITC'">VS</tspan></text>
+  </g>
+</svg>
