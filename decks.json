@@ -1,24 +1,298 @@
 [
   {
-    "id": "vocab-set-1",
-    "title": "Vocab Set 1 (Auspicious–Vigilant)",
+    "id": "vocab-set-11",
+    "title": "Vocab Set 11 (Ad hoc–Vociferous)",
     "cards": [
-      { "id": "auspicious", "word": "auspicious", "meaning": "Showing signs that promise success" },
-      { "id": "introspection", "word": "introspection", "meaning": "Examination of one’s thoughts and feelings" },
-      { "id": "retrospect", "word": "retrospect", "meaning": "Looking at past times or events" },
-      { "id": "specimen", "word": "specimen", "meaning": "A single thing taken as part of a whole" },
-      { "id": "specter", "word": "specter", "meaning": "Ghost or haunting fear of future trouble" },
-      { "id": "spectrum", "word": "spectrum", "meaning": "Bands of colors/bands of soundwaves or wide range of ideas" },
-      { "id": "speculate", "word": "speculate", "meaning": "To form opinions without knowledge or to buy/sell something" },
-      { "id": "surveillance", "word": "surveillance", "meaning": "Close observation of a suspect" },
-      { "id": "vigil", "word": "vigil", "meaning": "To keep watch or to pray" },
-      { "id": "vigilant", "word": "vigilant", "meaning": "On the lookout for danger" }
+      { "id": "ad-hoc", "word": "ad hoc", "meaning": "For a specific purpose or situation" },
+      { "id": "admonish", "word": "admonish", "meaning": "To scold gently but firmly; to warn" },
+      { "id": "assimilate", "word": "assimilate", "meaning": "To digest; to become similar or part of a whole" },
+      { "id": "olfactory", "word": "olfactory", "meaning": "Pertaining to the sense of smell" },
+      { "id": "redolent", "word": "redolent", "meaning": "Smelling strongly; full of memories" },
+      { "id": "resonate", "word": "resonate", "meaning": "To produce sound vibrations; to echo" },
+      { "id": "sonic", "word": "sonic", "meaning": "Pertaining to sound waves or audible sounds" },
+      { "id": "advocate", "word": "advocate", "meaning": "To speak in favor of something or recommend; a supporter of a cause" },
+      { "id": "evoke", "word": "evoke", "meaning": "To summon, inspire, or produce a reaction" },
+      { "id": "provocative", "word": "provocative", "meaning": "Exciting or stimulating" },
+      { "id": "vociferous", "word": "vociferous", "meaning": "Making a loud outcry or protest" }
     ],
     "definitionMCQs": [
-      { "id":"def-auspicious","question":"What does “auspicious” mean?","choices":["showing signs that promise success","hard to understand","likely to cause an argument","full of loud noise"],"correctIndex":0,"explanation":"Auspicious suggests a positive outcome." }
+      {
+        "id": "def-ad-hoc",
+        "question": "What does “ad hoc” mean?",
+        "choices": [
+          "for a specific purpose or situation",
+          "planned far in advance",
+          "without any rules",
+          "by accident"
+        ],
+        "correctIndex": 0,
+        "explanation": "Ad hoc refers to something created or done for a particular purpose."
+      },
+      {
+        "id": "def-admonish",
+        "question": "What does “admonish” mean?",
+        "choices": [
+          "to scold gently but firmly or warn",
+          "to praise loudly",
+          "to ignore completely",
+          "to celebrate"
+        ],
+        "correctIndex": 0,
+        "explanation": "To admonish someone is to correct or warn them seriously but calmly."
+      },
+      {
+        "id": "def-assimilate",
+        "question": "What does “assimilate” mean?",
+        "choices": [
+          "to absorb or become part of a whole",
+          "to reject completely",
+          "to repeat something exactly",
+          "to hide information"
+        ],
+        "correctIndex": 0,
+        "explanation": "Assimilate means to take in or blend into something larger."
+      },
+      {
+        "id": "def-olfactory",
+        "question": "What does “olfactory” relate to?",
+        "choices": [
+          "the sense of smell",
+          "the sense of sight",
+          "the sense of touch",
+          "the sense of balance"
+        ],
+        "correctIndex": 0,
+        "explanation": "Olfactory refers to smelling."
+      },
+      {
+        "id": "def-redolent",
+        "question": "What does “redolent” mean?",
+        "choices": [
+          "smelling strongly or bringing back memories",
+          "completely silent",
+          "very dangerous",
+          "hard to understand"
+        ],
+        "correctIndex": 0,
+        "explanation": "Redolent describes a strong smell or something that reminds you of the past."
+      },
+      {
+        "id": "def-resonate",
+        "question": "What does “resonate” mean?",
+        "choices": [
+          "to echo or produce sound vibrations",
+          "to disappear quickly",
+          "to argue angrily",
+          "to remain silent"
+        ],
+        "correctIndex": 0,
+        "explanation": "Resonate means to vibrate with sound or echo."
+      },
+      {
+        "id": "def-sonic",
+        "question": "What does “sonic” describe?",
+        "choices": [
+          "sound or sound waves",
+          "light or brightness",
+          "movement or speed",
+          "temperature"
+        ],
+        "correctIndex": 0,
+        "explanation": "Sonic refers to anything related to sound."
+      },
+      {
+        "id": "def-advocate",
+        "question": "What does “advocate” mean?",
+        "choices": [
+          "to support or speak in favor of something",
+          "to argue against something",
+          "to remain neutral",
+          "to confuse others"
+        ],
+        "correctIndex": 0,
+        "explanation": "An advocate supports or recommends a cause or idea."
+      },
+      {
+        "id": "def-evoke",
+        "question": "What does “evoke” mean?",
+        "choices": [
+          "to bring about a feeling or response",
+          "to destroy completely",
+          "to avoid responsibility",
+          "to forget something"
+        ],
+        "correctIndex": 0,
+        "explanation": "Evoke means to cause a feeling, memory, or reaction."
+      },
+      {
+        "id": "def-provocative",
+        "question": "What does “provocative” mean?",
+        "choices": [
+          "exciting or stimulating",
+          "boring and dull",
+          "easy to forget",
+          "very quiet"
+        ],
+        "correctIndex": 0,
+        "explanation": "Provocative describes something that sparks thought or reaction."
+      },
+      {
+        "id": "def-vociferous",
+        "question": "What does “vociferous” mean?",
+        "choices": [
+          "loud and forceful in protest",
+          "calm and silent",
+          "slow and careful",
+          "confused and unsure"
+        ],
+        "correctIndex": 0,
+        "explanation": "Vociferous means expressing opinions loudly."
+      }
     ],
     "usageMCQs": [
-      { "id":"use-auspicious","prompt":"Pick the sentence that uses “auspicious” correctly.","word":"auspicious","choices":["The clear skies on the day of the tournament felt like an auspicious sign.","He auspiciously his backpack into the locker before class.","The cafeteria served an auspicious, which tasted like pizza.","She was auspicious at math because she forgot her calculator."],"correctIndex":0,"explanation":"Auspicious describes signs that something is likely to succeed." }
+      {
+        "id": "use-ad-hoc",
+        "prompt": "Pick the sentence that uses “ad hoc” correctly.",
+        "word": "ad hoc",
+        "choices": [
+          "The teacher formed an ad hoc committee to solve the problem quickly.",
+          "She ad hoc her homework into the backpack.",
+          "The dog ad hoc across the yard.",
+          "He felt ad hoc after running the race."
+        ],
+        "correctIndex": 0,
+        "explanation": "Ad hoc describes something created for a specific situation."
+      },
+      {
+        "id": "use-admonish",
+        "prompt": "Pick the sentence that uses “admonish” correctly.",
+        "word": "admonish",
+        "choices": [
+          "The coach had to admonish the team for not following the rules.",
+          "She admonished the music to be louder.",
+          "The book admonished on the shelf.",
+          "He admonish-ed the door shut."
+        ],
+        "correctIndex": 0,
+        "explanation": "To admonish is to warn or scold gently but firmly."
+      },
+      {
+        "id": "use-assimilate",
+        "prompt": "Pick the sentence that uses “assimilate” correctly.",
+        "word": "assimilate",
+        "choices": [
+          "It took time for the new student to assimilate into the class.",
+          "She assimilated her shoes before leaving.",
+          "The bell assimilated loudly at noon.",
+          "He assimilate the paper into a square."
+        ],
+        "correctIndex": 0,
+        "explanation": "Assimilate means to blend into a group or take something in."
+      },
+      {
+        "id": "use-olfactory",
+        "prompt": "Pick the sentence that uses “olfactory” correctly.",
+        "word": "olfactory",
+        "choices": [
+          "Dogs have a strong olfactory sense that helps them track smells.",
+          "She olfactory the homework carefully.",
+          "The olfactory was late for class.",
+          "He wore an olfactory jacket to school."
+        ],
+        "correctIndex": 0,
+        "explanation": "Olfactory relates to the sense of smell."
+      },
+      {
+        "id": "use-redolent",
+        "prompt": "Pick the sentence that uses “redolent” correctly.",
+        "word": "redolent",
+        "choices": [
+          "The bakery was redolent of fresh bread and warm memories.",
+          "She redolent the paper neatly.",
+          "The redolent solved the math problem.",
+          "He felt redolent after finishing lunch."
+        ],
+        "correctIndex": 0,
+        "explanation": "Redolent means strongly scented or bringing back memories."
+      },
+      {
+        "id": "use-resonate",
+        "prompt": "Pick the sentence that uses “resonate” correctly.",
+        "word": "resonate",
+        "choices": [
+          "The speaker’s message continued to resonate with the audience.",
+          "She resonated the backpack onto the floor.",
+          "The teacher resonate the lesson quickly.",
+          "He resonate tired after the game."
+        ],
+        "correctIndex": 0,
+        "explanation": "Resonate means to echo or have a lasting effect."
+      },
+      {
+        "id": "use-sonic",
+        "prompt": "Pick the sentence that uses “sonic” correctly.",
+        "word": "sonic",
+        "choices": [
+          "The jet created a sonic boom as it flew overhead.",
+          "She sonic the answer on the test.",
+          "The sonic was full of homework.",
+          "He wore sonic shoes to school."
+        ],
+        "correctIndex": 0,
+        "explanation": "Sonic refers to sound or sound waves."
+      },
+      {
+        "id": "use-advocate",
+        "prompt": "Pick the sentence that uses “advocate” correctly.",
+        "word": "advocate",
+        "choices": [
+          "She continues to advocate for healthier school lunches.",
+          "He advocated the door closed.",
+          "The advocate was raining outside.",
+          "She wore an advocate to the party."
+        ],
+        "correctIndex": 0,
+        "explanation": "An advocate supports or recommends a cause."
+      },
+      {
+        "id": "use-evoke",
+        "prompt": "Pick the sentence that uses “evoke” correctly.",
+        "word": "evoke",
+        "choices": [
+          "The song was able to evoke strong emotions in the crowd.",
+          "She evoked her backpack to school.",
+          "The evoke was late again.",
+          "He evoke tired after practice."
+        ],
+        "correctIndex": 0,
+        "explanation": "Evoke means to bring about a feeling or response."
+      },
+      {
+        "id": "use-provocative",
+        "prompt": "Pick the sentence that uses “provocative” correctly.",
+        "word": "provocative",
+        "choices": [
+          "The book asked provocative questions that made us think.",
+          "She provocative the ball across the field.",
+          "The provocative was missing from class.",
+          "He wore a provocative to lunch."
+        ],
+        "correctIndex": 0,
+        "explanation": "Provocative means stimulating thought or reaction."
+      },
+      {
+        "id": "use-vociferous",
+        "prompt": "Pick the sentence that uses “vociferous” correctly.",
+        "word": "vociferous",
+        "choices": [
+          "The crowd became vociferous when the referee made the call.",
+          "She vociferous the homework neatly.",
+          "The vociferous was delicious.",
+          "He vociferous quietly at his desk."
+        ],
+        "correctIndex": 0,
+        "explanation": "Vociferous describes loud and forceful expression."
+      }
     ]
   }
 ]
