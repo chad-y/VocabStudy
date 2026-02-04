@@ -1,0 +1,17 @@
+In app.js need to change line 91 everytime you upload a new deck
+
+
+
+In Decks.json can you make this vocab-set-11 and produce the full definition and usage examples for all?
+
+Ad hoc - For a specific purpose or situation
+Admonish - To scold gently but firmly; To warn
+Assimilate - To digest; To become similar or part of a whole
+Olfactory - Pertaining to a sense of smell
+Redolent - Smelling strongly; Full of memories
+Resonate - To produce or show sound vibrations; To echo
+Sonic - Pertaining to sound waves or audible sounds
+Advocate - To speak in favor of something or to recommend; A person who supports or defends a cause
+Evoke - To summon or to inspire; To produce a reaction or response
+Provocative - Exciting or stimulating
+Vociferous - Making an outcry; Protest
