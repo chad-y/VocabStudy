@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b5fff" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Vocab Study</title>
+</head>
+<body>
+  <header class="topbar">
+    <button id="backBtn" class="link hidden">← Back</button>
+    <h1 id="title">Vocab Study</h1>
+    <button id="parentBtn" class="link">Parent</button>
+  </header>
+
+  <main id="app" class="container">
+    <!-- Home -->
+    <section id="homeView" class="view">
+      <div class="card">
+        <h2>Decks</h2>
+        <div id="deckList" class="list"></div>
+      </div>
+    </section>
+
+    <!-- Deck Menu -->
+    <section id="deckView" class="view hidden">
+      <div class="card">
+        <h2 id="deckTitle">Deck</h2>
+        <div class="row">
+          <label class="toggle">
+            <input type="checkbox" id="shuffleToggle" checked />
+            <span>Shuffle</span>
+          </label>
+        </div>
+
+        <div class="grid">
+          <button class="btn" id="flashBtn">Flashcards</button>
+          <button class="btn" id="defQuizBtn">Definition Quiz</button>
+          <button class="btn" id="useQuizBtn">Usage Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flashcards -->
+    <section id="flashView" class="view hidden">
+      <div class="row">
+        <span id="flashCounter" class="muted"></span>
+      </div>
+
+      <button id="flashCard" class="flashcard" aria-label="Tap to flip"></button>
+
+      <div class="nav">
+        <button class="btn ghost" id="prevCardBtn">Prev</button>
+        <button class="btn ghost" id="nextCardBtn">Next</button>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quizView" class="view hidden">
+      <div class="row">
+        <span id="quizCounter" class="muted"></span>
+        <span id="quizScore" class="muted"></span>
+      </div>
+
+      <div class="card">
+        <h2 id="quizPrompt"></h2>
+        <div id="quizChoices" class="list"></div>
+        <p id="quizExplanation" class="muted hidden"></p>
+      </div>
+
+      <div class="nav">
+        <button class="btn ghost" id="nextQuestionBtn" disabled>Next</button>
+      </div>
+    </section>
+
+    <!-- Parent Mode -->
+    <section id="parentView" class="view hidden">
+      <div class="card">
+        <h2>Parent Mode</h2>
+        <p class="muted">Import a deck JSON file. It will be saved on this iPhone.</p>
+
+        <div class="row">
+          <input type="file" id="fileInput" accept="application/json" />
+        </div>
+
+        <hr />
+
+        <h3>Imported Decks</h3>
+        <div id="importedList" class="list"></div>
+
+        <p class="muted small">
+          Tip: If you reinstall Safari data or switch devices, you may need to re-import.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    // Register offline support
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
