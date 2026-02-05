@@ -13,11 +13,7 @@ const LS_LAST_BUILTIN_AT = "vocabStudyLastBuiltinLoadedAt_v2";
 // ---------- Storage helpers ----------
 function safeJSONParse(s, fallback) {
   if (s === null || s === "null" || s === "undefined") return fallback;
-  try {
-    return JSON.parse(s);
-  } catch {
-    return fallback;
-  }
+  try { return JSON.parse(s); } catch { return fallback; }
 }
 
 function getImportedDecks() {
@@ -55,8 +51,8 @@ function shuffleArrayInPlace(arr) {
   return arr;
 }
 
-// Create a shuffled copy of a quiz question, shuffling its choices and recalculating correctIndex
 function shuffledQuestion(q) {
+  // Clone question so we don't mutate source deck data
   const clone = { ...q };
 
   const choices = Array.isArray(q.choices) ? [...q.choices] : [];
@@ -64,13 +60,13 @@ function shuffledQuestion(q) {
 
   const tagged = choices.map((text, idx) => ({
     text,
-    isCorrect: idx === correctIdx,
+    isCorrect: idx === correctIdx
   }));
 
   shuffleArrayInPlace(tagged);
 
-  clone.choices = tagged.map((x) => x.text);
-  clone.correctIndex = tagged.findIndex((x) => x.isCorrect);
+  clone.choices = tagged.map(x => x.text);
+  clone.correctIndex = tagged.findIndex(x => x.isCorrect);
 
   return clone;
 }
@@ -99,7 +95,7 @@ const views = {
   deck: document.getElementById("deckView"),
   flash: document.getElementById("flashView"),
   quiz: document.getElementById("quizView"),
-  parent: document.getElementById("parentView"),
+  parent: document.getElementById("parentView")
 };
 
 const titleEl = document.getElementById("title");
@@ -132,7 +128,7 @@ const resetImportedBtn = document.getElementById("resetImportedBtn");
 
 // ---------- Navigation ----------
 function show(viewName, headerTitle) {
-  Object.values(views).forEach((v) => v.classList.add("hidden"));
+  Object.values(views).forEach(v => v.classList.add("hidden"));
   views[viewName].classList.remove("hidden");
   titleEl.textContent = headerTitle || "Vocab Study";
   backBtn.classList.toggle("hidden", viewName === "home");
@@ -177,7 +173,7 @@ async function loadBuiltinDecks() {
 }
 
 function rebuildDeckList() {
-  const imported = getImportedDecks(); // always an array now
+  const imported = getImportedDecks();
   decks = [...imported, ...builtinDecks];
 
   deckList.innerHTML = "";
@@ -190,14 +186,11 @@ function rebuildDeckList() {
     return;
   }
 
-  decks.forEach((d) => {
+  decks.forEach(d => {
     const btn = document.createElement("button");
     btn.className = "choiceBtn";
     btn.textContent = d.title;
-    btn.onclick = () => {
-      currentDeck = d;
-      showDeck();
-    };
+    btn.onclick = () => { currentDeck = d; showDeck(); };
     deckList.appendChild(btn);
   });
 }
@@ -278,10 +271,10 @@ function startQuiz(mode) {
   quizMode = mode;
   const src = getQuizSource(mode);
 
-  // Always shuffle the choices (and correctIndex) at quiz start
+  // Always shuffle choices & correctIndex at runtime, every quiz start
   quizOrder = src.map(shuffledQuestion);
 
-  // Shuffle question order only if Shuffle toggle is ON
+  // Shuffle question order if Shuffle toggle is ON
   if (shuffleOn) shuffleArrayInPlace(quizOrder);
 
   quizIndex = 0;
@@ -357,7 +350,7 @@ nextQuestionBtn.addEventListener("click", () => {
     quizIndex += 1;
     renderQuizQuestion();
   } else {
-    // Restart same mode (new shuffle of choices each time quiz starts)
+    // Restart same mode (new choice-shuffle each restart)
     startQuiz(quizMode);
   }
 });
@@ -375,7 +368,7 @@ fileInput.addEventListener("change", async (e) => {
     const newDecks = Array.isArray(parsed) ? parsed : [parsed];
 
     // Light validation / normalization
-    newDecks.forEach((d) => {
+    newDecks.forEach(d => {
       if (!d || typeof d.id !== "string" || typeof d.title !== "string") {
         throw new Error("Each deck must have id and title");
       }
@@ -385,8 +378,8 @@ fileInput.addEventListener("change", async (e) => {
     });
 
     const imported = getImportedDecks();
-    newDecks.forEach((nd) => {
-      const idx = imported.findIndex((d) => d.id === nd.id);
+    newDecks.forEach(nd => {
+      const idx = imported.findIndex(d => d.id === nd.id);
       if (idx >= 0) imported[idx] = nd;
       else imported.unshift(nd);
     });
@@ -414,7 +407,7 @@ function renderImportedList() {
     return;
   }
 
-  imported.forEach((d) => {
+  imported.forEach(d => {
     const row = document.createElement("div");
     row.className = "row";
 
@@ -426,7 +419,7 @@ function renderImportedList() {
     del.type = "button";
     del.textContent = "Delete";
     del.onclick = () => {
-      const next = getImportedDecks().filter((x) => x.id !== d.id);
+      const next = getImportedDecks().filter(x => x.id !== d.id);
       setImportedDecks(next);
       renderImportedList();
       rebuildDeckList();
@@ -449,9 +442,7 @@ if (resetImportedBtn) {
 }
 
 // ---------- Wire up buttons ----------
-shuffleToggle.addEventListener("change", () => {
-  shuffleOn = shuffleToggle.checked;
-});
+shuffleToggle.addEventListener("change", () => { shuffleOn = shuffleToggle.checked; });
 flashBtn.addEventListener("click", startFlashcards);
 defQuizBtn.addEventListener("click", () => startQuiz("def"));
 useQuizBtn.addEventListener("click", () => startQuiz("use"));

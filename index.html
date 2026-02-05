@@ -105,7 +105,9 @@
     </section>
   </main>
 
+  <!-- Load app.js normally (service worker will NOT cache it) -->
   <script src="app.js"></script>
+
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js').catch(() => {});

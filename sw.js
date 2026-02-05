@@ -1,14 +1,14 @@
-// Service worker caches the "app shell" so the app opens fast and works offline.
-// IMPORTANT: decks.json is intentionally NOT cached here.
-// Offline decks come from localStorage "last known good" (saved by app.js).
+// Service worker caches the "app shell" so the app opens fast and UI works offline.
+// IMPORTANT: app.js and decks.json are intentionally NOT cached here.
+// - app.js always loads fresh (fixes iOS stuck-on-old-JS issues)
+// - decks.json loads fresh when online; offline decks come from localStorage "last known good"
 
-const CACHE = "vocab-study-shell-v4";
+const CACHE = "vocab-study-shell-v5";
 
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./app.js",
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
@@ -33,8 +33,8 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
-  // Never cache decks.json via service worker
-  if (url.pathname.endsWith("/decks.json")) {
+  // Never cache app.js or decks.json
+  if (url.pathname.endsWith("/app.js") || url.pathname.endsWith("/decks.json")) {
     event.respondWith(fetch(event.request));
     return;
   }
