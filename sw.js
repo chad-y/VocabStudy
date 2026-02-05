@@ -2,7 +2,7 @@
 // IMPORTANT: decks.json is intentionally NOT cached here.
 // Offline decks come from localStorage "last known good" (saved by app.js).
 
-const CACHE = "vocab-study-shell-v3";
+const CACHE = "vocab-study-shell-v4";
 
 const ASSETS = [
   "./",

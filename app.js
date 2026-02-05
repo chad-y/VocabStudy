@@ -1,8 +1,8 @@
-/* Vocab Study - clean build
+/* Vocab Study - app.js (clean build)
    - Imported decks: saved in localStorage
    - Built-in decks (decks.json): fetched online, cached as "last known good"
    - Offline: uses last known good built-in decks + imported decks
-   - Service worker caches app shell only (NOT decks.json)
+   - Quiz choices are shuffled at runtime every time you start a quiz
 */
 
 // ---------- LocalStorage keys ----------
@@ -12,7 +12,12 @@ const LS_LAST_BUILTIN_AT = "vocabStudyLastBuiltinLoadedAt_v2";
 
 // ---------- Storage helpers ----------
 function safeJSONParse(s, fallback) {
-  try { return JSON.parse(s); } catch { return fallback; }
+  if (s === null || s === "null" || s === "undefined") return fallback;
+  try {
+    return JSON.parse(s);
+  } catch {
+    return fallback;
+  }
 }
 
 function getImportedDecks() {
@@ -27,18 +32,47 @@ function setImportedDecks(decks) {
   );
 }
 
-
 function setLastBuiltinDecks(decks) {
   localStorage.setItem(LS_LAST_BUILTIN, JSON.stringify(decks));
   localStorage.setItem(LS_LAST_BUILTIN_AT, new Date().toISOString());
 }
 
 function getLastBuiltinDecks() {
-  return safeJSONParse(localStorage.getItem(LS_LAST_BUILTIN), []);
+  const v = safeJSONParse(localStorage.getItem(LS_LAST_BUILTIN), []);
+  return Array.isArray(v) ? v : [];
 }
 
 function getLastBuiltinAt() {
   return localStorage.getItem(LS_LAST_BUILTIN_AT);
+}
+
+// ---------- Random helpers ----------
+function shuffleArrayInPlace(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Create a shuffled copy of a quiz question, shuffling its choices and recalculating correctIndex
+function shuffledQuestion(q) {
+  const clone = { ...q };
+
+  const choices = Array.isArray(q.choices) ? [...q.choices] : [];
+  const correctIdx = Number.isInteger(q.correctIndex) ? q.correctIndex : -1;
+
+  const tagged = choices.map((text, idx) => ({
+    text,
+    isCorrect: idx === correctIdx,
+  }));
+
+  shuffleArrayInPlace(tagged);
+
+  clone.choices = tagged.map((x) => x.text);
+  clone.correctIndex = tagged.findIndex((x) => x.isCorrect);
+
+  return clone;
 }
 
 // ---------- App state ----------
@@ -96,9 +130,9 @@ const fileInput = document.getElementById("fileInput");
 const importedList = document.getElementById("importedList");
 const resetImportedBtn = document.getElementById("resetImportedBtn");
 
-// ---------- Navigation helpers ----------
+// ---------- Navigation ----------
 function show(viewName, headerTitle) {
-  Object.values(views).forEach(v => v.classList.add("hidden"));
+  Object.values(views).forEach((v) => v.classList.add("hidden"));
   views[viewName].classList.remove("hidden");
   titleEl.textContent = headerTitle || "Vocab Study";
   backBtn.classList.toggle("hidden", viewName === "home");
@@ -115,7 +149,6 @@ function showDeck() {
   show("deck", "Deck");
 }
 
-// Back button logic
 backBtn.addEventListener("click", () => {
   if (!views.flash.classList.contains("hidden")) showDeck();
   else if (!views.quiz.classList.contains("hidden")) showDeck();
@@ -123,7 +156,6 @@ backBtn.addEventListener("click", () => {
   else if (!views.deck.classList.contains("hidden")) showHome();
 });
 
-// Parent button
 parentBtn.addEventListener("click", () => {
   renderImportedList();
   show("parent", "Parent Mode");
@@ -131,7 +163,6 @@ parentBtn.addEventListener("click", () => {
 
 // ---------- Deck loading ----------
 async function loadBuiltinDecks() {
-  // Try online first; if that fails, use last-known-good from localStorage
   try {
     const res = await fetch("./decks.json", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -146,10 +177,11 @@ async function loadBuiltinDecks() {
 }
 
 function rebuildDeckList() {
-  const imported = getImportedDecks();
+  const imported = getImportedDecks(); // always an array now
   decks = [...imported, ...builtinDecks];
 
   deckList.innerHTML = "";
+
   if (decks.length === 0) {
     const p = document.createElement("p");
     p.className = "muted";
@@ -158,11 +190,14 @@ function rebuildDeckList() {
     return;
   }
 
-  decks.forEach(d => {
+  decks.forEach((d) => {
     const btn = document.createElement("button");
     btn.className = "choiceBtn";
     btn.textContent = d.title;
-    btn.onclick = () => { currentDeck = d; showDeck(); };
+    btn.onclick = () => {
+      currentDeck = d;
+      showDeck();
+    };
     deckList.appendChild(btn);
   });
 }
@@ -189,7 +224,8 @@ function updateStatusLine(source) {
 function startFlashcards() {
   const cards = currentDeck.cards || [];
   flashOrder = [...cards];
-  if (shuffleOn) flashOrder.sort(() => Math.random() - 0.5);
+  if (shuffleOn) shuffleArrayInPlace(flashOrder);
+
   flashIndex = 0;
   flashFlipped = false;
   renderFlashcard();
@@ -241,14 +277,17 @@ function getQuizSource(mode) {
 function startQuiz(mode) {
   quizMode = mode;
   const src = getQuizSource(mode);
-  quizOrder = [...src];
-  if (shuffleOn) quizOrder.sort(() => Math.random() - 0.5);
+
+  // Always shuffle the choices (and correctIndex) at quiz start
+  quizOrder = src.map(shuffledQuestion);
+
+  // Shuffle question order only if Shuffle toggle is ON
+  if (shuffleOn) shuffleArrayInPlace(quizOrder);
 
   quizIndex = 0;
   quizScore = 0;
 
   if (quizOrder.length === 0) {
-    // Show a simple "no questions" screen
     quizCounter.textContent = "";
     quizScoreEl.textContent = "";
     quizPrompt.textContent = "No questions in this deck yet.";
@@ -318,7 +357,7 @@ nextQuestionBtn.addEventListener("click", () => {
     quizIndex += 1;
     renderQuizQuestion();
   } else {
-    // restart same mode
+    // Restart same mode (new shuffle of choices each time quiz starts)
     startQuiz(quizMode);
   }
 });
@@ -331,10 +370,12 @@ fileInput.addEventListener("change", async (e) => {
   try {
     const text = await file.text();
     const parsed = JSON.parse(text);
+
+    // Accept either a single deck object or an array of decks
     const newDecks = Array.isArray(parsed) ? parsed : [parsed];
 
-    // very light validation
-    newDecks.forEach(d => {
+    // Light validation / normalization
+    newDecks.forEach((d) => {
       if (!d || typeof d.id !== "string" || typeof d.title !== "string") {
         throw new Error("Each deck must have id and title");
       }
@@ -344,8 +385,8 @@ fileInput.addEventListener("change", async (e) => {
     });
 
     const imported = getImportedDecks();
-    newDecks.forEach(nd => {
-      const idx = imported.findIndex(d => d.id === nd.id);
+    newDecks.forEach((nd) => {
+      const idx = imported.findIndex((d) => d.id === nd.id);
       if (idx >= 0) imported[idx] = nd;
       else imported.unshift(nd);
     });
@@ -373,7 +414,7 @@ function renderImportedList() {
     return;
   }
 
-  imported.forEach(d => {
+  imported.forEach((d) => {
     const row = document.createElement("div");
     row.className = "row";
 
@@ -385,7 +426,7 @@ function renderImportedList() {
     del.type = "button";
     del.textContent = "Delete";
     del.onclick = () => {
-      const next = getImportedDecks().filter(x => x.id !== d.id);
+      const next = getImportedDecks().filter((x) => x.id !== d.id);
       setImportedDecks(next);
       renderImportedList();
       rebuildDeckList();
@@ -397,16 +438,20 @@ function renderImportedList() {
   });
 }
 
-resetImportedBtn.addEventListener("click", () => {
-  const ok = confirm("Delete ALL imported decks on this device?");
-  if (!ok) return;
-  setImportedDecks([]);
-  renderImportedList();
-  rebuildDeckList();
-});
+if (resetImportedBtn) {
+  resetImportedBtn.addEventListener("click", () => {
+    const ok = confirm("Delete ALL imported decks on this device?");
+    if (!ok) return;
+    setImportedDecks([]);
+    renderImportedList();
+    rebuildDeckList();
+  });
+}
 
 // ---------- Wire up buttons ----------
-shuffleToggle.addEventListener("change", () => { shuffleOn = shuffleToggle.checked; });
+shuffleToggle.addEventListener("change", () => {
+  shuffleOn = shuffleToggle.checked;
+});
 flashBtn.addEventListener("click", startFlashcards);
 defQuizBtn.addEventListener("click", () => startQuiz("def"));
 useQuizBtn.addEventListener("click", () => startQuiz("use"));
