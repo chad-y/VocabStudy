@@ -4,12 +4,17 @@
    - Offline: uses last known good built-in decks + imported decks
    - Quiz choices are shuffled at runtime every time you start a quiz
    - Parent Mode includes "Force Update (Fix App)" to clear SW + caches and reload
+   - Home shows "Offline Ready" indicator (checks Cache Storage for the shell)
 */
 
 // ---------- LocalStorage keys ----------
 const LS_IMPORTED = "vocabStudyImportedDecks_v2";
 const LS_LAST_BUILTIN = "vocabStudyLastBuiltinDecks_v2";
 const LS_LAST_BUILTIN_AT = "vocabStudyLastBuiltinLoadedAt_v2";
+
+// IMPORTANT: Must match your sw.js CACHE value
+// If you change sw.js CACHE, update this constant too.
+const SW_SHELL_CACHE_NAME = "vocab-study-shell-v5";
 
 // ---------- Storage helpers ----------
 function safeJSONParse(s, fallback) {
@@ -53,7 +58,6 @@ function shuffleArrayInPlace(arr) {
 }
 
 function shuffledQuestion(q) {
-  // Clone question so we don't mutate source deck data
   const clone = { ...q };
 
   const choices = Array.isArray(q.choices) ? [...q.choices] : [];
@@ -103,6 +107,7 @@ const titleEl = document.getElementById("title");
 const backBtn = document.getElementById("backBtn");
 const parentBtn = document.getElementById("parentBtn");
 const statusLine = document.getElementById("statusLine");
+const offlineReadyValue = document.getElementById("offlineReadyValue");
 
 const deckList = document.getElementById("deckList");
 const deckTitle = document.getElementById("deckTitle");
@@ -139,6 +144,8 @@ function show(viewName, headerTitle) {
 function showHome() {
   currentDeck = null;
   show("home", "Vocab Study");
+  // Update Offline Ready indicator whenever we return home
+  updateOfflineReadyIndicator();
 }
 
 function showDeck() {
@@ -158,6 +165,32 @@ parentBtn.addEventListener("click", () => {
   renderImportedList();
   show("parent", "Parent Mode");
 });
+
+// ---------- Offline Ready indicator ----------
+async function updateOfflineReadyIndicator() {
+  if (!offlineReadyValue) return;
+
+  // If Cache API isn't available, just be honest.
+  if (!("caches" in window)) {
+    offlineReadyValue.textContent = "Unknown";
+    return;
+  }
+
+  try {
+    const hasShellCache = await caches.has(SW_SHELL_CACHE_NAME);
+    if (!hasShellCache) {
+      offlineReadyValue.textContent = "No (open once online)";
+      return;
+    }
+
+    // Ensure the cache actually has entries (some edge cases can create empty caches)
+    const cache = await caches.open(SW_SHELL_CACHE_NAME);
+    const keys = await cache.keys();
+    offlineReadyValue.textContent = keys && keys.length ? "Yes" : "No (open once online)";
+  } catch {
+    offlineReadyValue.textContent = "Unknown";
+  }
+}
 
 // ---------- Deck loading ----------
 async function loadBuiltinDecks() {
@@ -273,10 +306,7 @@ function startQuiz(mode) {
   quizMode = mode;
   const src = getQuizSource(mode);
 
-  // Always shuffle choices & correctIndex at runtime, every quiz start
   quizOrder = src.map(shuffledQuestion);
-
-  // Shuffle question order if Shuffle toggle is ON
   if (shuffleOn) shuffleArrayInPlace(quizOrder);
 
   quizIndex = 0;
@@ -352,7 +382,6 @@ nextQuestionBtn.addEventListener("click", () => {
     quizIndex += 1;
     renderQuizQuestion();
   } else {
-    // Restart same mode (new choice-shuffle each restart)
     startQuiz(quizMode);
   }
 });
@@ -366,10 +395,8 @@ fileInput.addEventListener("change", async (e) => {
     const text = await file.text();
     const parsed = JSON.parse(text);
 
-    // Accept either a single deck object or an array of decks
     const newDecks = Array.isArray(parsed) ? parsed : [parsed];
 
-    // Light validation / normalization
     newDecks.forEach(d => {
       if (!d || typeof d.id !== "string" || typeof d.title !== "string") {
         throw new Error("Each deck must have id and title");
@@ -452,7 +479,7 @@ async function forceUpdateFixApp() {
   );
   if (!ok) return;
 
-  // Best effort: unregister SW and clear Cache Storage
+  // Unregister service workers (best effort)
   try {
     if ("serviceWorker" in navigator) {
       const regs = await navigator.serviceWorker.getRegistrations();
@@ -460,6 +487,7 @@ async function forceUpdateFixApp() {
     }
   } catch {}
 
+  // Clear Cache Storage (best effort)
   try {
     if ("caches" in window) {
       const keys = await caches.keys();
@@ -467,8 +495,7 @@ async function forceUpdateFixApp() {
     }
   } catch {}
 
-  // Reload with a cache-busting query string
-  // (keeps same path, just forces fresh fetch)
+  // Reload with cache-busting param
   const url = new URL(window.location.href);
   url.searchParams.set("force", String(Date.now()));
   window.location.replace(url.toString());
@@ -492,5 +519,7 @@ useQuizBtn.addEventListener("click", () => startQuiz("use"));
   builtinDecks = result.decks;
   rebuildDeckList();
   updateStatusLine(result.source);
+
+  // Show home (also updates Offline Ready indicator)
   showHome();
 })();

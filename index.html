@@ -23,7 +23,14 @@
     <section id="homeView" class="view">
       <div class="card">
         <h2>Decks</h2>
+
         <p id="statusLine" class="muted small"></p>
+
+        <!-- Offline Ready indicator -->
+        <p class="muted small" style="margin-top:6px;">
+          <b>Offline Ready:</b> <span id="offlineReadyValue">Checking…</span>
+        </p>
+
         <div id="deckList" class="list"></div>
       </div>
     </section>
@@ -111,7 +118,6 @@
     </section>
   </main>
 
-  <!-- Load app.js normally (service worker will NOT cache it, per your sw.js design) -->
   <script src="app.js"></script>
 
   <script>
