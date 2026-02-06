@@ -1,8 +1,9 @@
-/* Vocab Study - app.js (clean build)
+/* Vocab Study - app.js
    - Imported decks: saved in localStorage
    - Built-in decks (decks.json): fetched online, cached as "last known good"
    - Offline: uses last known good built-in decks + imported decks
    - Quiz choices are shuffled at runtime every time you start a quiz
+   - Parent Mode includes "Force Update (Fix App)" to clear SW + caches and reload
 */
 
 // ---------- LocalStorage keys ----------
@@ -125,6 +126,7 @@ const nextQuestionBtn = document.getElementById("nextQuestionBtn");
 const fileInput = document.getElementById("fileInput");
 const importedList = document.getElementById("importedList");
 const resetImportedBtn = document.getElementById("resetImportedBtn");
+const forceUpdateBtn = document.getElementById("forceUpdateBtn");
 
 // ---------- Navigation ----------
 function show(viewName, headerTitle) {
@@ -438,6 +440,43 @@ if (resetImportedBtn) {
     setImportedDecks([]);
     renderImportedList();
     rebuildDeckList();
+  });
+}
+
+// ---------- Force Update (Fix App) ----------
+async function forceUpdateFixApp() {
+  const ok = confirm(
+    "Force Update will clear cached app files and reload the latest version.\n\n" +
+    "It will NOT delete your imported decks or your saved offline decks.\n\n" +
+    "Continue?"
+  );
+  if (!ok) return;
+
+  // Best effort: unregister SW and clear Cache Storage
+  try {
+    if ("serviceWorker" in navigator) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map(r => r.unregister()));
+    }
+  } catch {}
+
+  try {
+    if ("caches" in window) {
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k => caches.delete(k)));
+    }
+  } catch {}
+
+  // Reload with a cache-busting query string
+  // (keeps same path, just forces fresh fetch)
+  const url = new URL(window.location.href);
+  url.searchParams.set("force", String(Date.now()));
+  window.location.replace(url.toString());
+}
+
+if (forceUpdateBtn) {
+  forceUpdateBtn.addEventListener("click", () => {
+    forceUpdateFixApp();
   });
 }
 

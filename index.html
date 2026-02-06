@@ -98,14 +98,20 @@
 
         <button id="resetImportedBtn" class="btn ghost" type="button">Delete All Imported Decks</button>
 
+        <div style="height:10px;"></div>
+
+        <button id="forceUpdateBtn" class="btn ghost" type="button">Force Update (Fix App)</button>
+
         <p class="muted small" style="margin-top:12px;">
-          Offline behavior: the app shows the last successfully loaded built-in decks, plus imported decks.
+          Force Update clears the app’s cached files and reloads the latest version.
+          It does <b>not</b> delete your imported decks or your last saved decks.
+          After using Force Update, open the app once while online to refresh offline caching.
         </p>
       </div>
     </section>
   </main>
 
-  <!-- Load app.js normally (service worker will NOT cache it) -->
+  <!-- Load app.js normally (service worker will NOT cache it, per your sw.js design) -->
   <script src="app.js"></script>
 
   <script>
