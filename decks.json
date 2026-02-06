@@ -1,7 +1,7 @@
 [
   {
-    "id": "vocab-set-11",
-    "title": "Vocab Set 11 (Ad hoc–Vociferous)",
+    "id": "chapter-11",
+    "title": "Chapter 11 (Ad hoc–Vociferous)",
     "cards": [
       { "id": "ad-hoc", "word": "ad hoc", "meaning": "For a specific purpose or situation" },
       { "id": "admonish", "word": "admonish", "meaning": "To scold gently but firmly; to warn" },
@@ -292,6 +292,250 @@
         ],
         "correctIndex": 0,
         "explanation": "Vociferous describes loud and forceful expression."
+      }
+    ]
+  },
+  {
+    "id": "chapter-12",
+    "title": "Chapter 12 (Assent–Tangent)",
+    "cards": [
+      { "id": "assent", "word": "assent", "meaning": "To consent; to express agreement" },
+      { "id": "dissent", "word": "dissent", "meaning": "To have or express a different opinion; to disagree" },
+      { "id": "presentiment", "word": "presentiment", "meaning": "A sense that something is about to happen" },
+      { "id": "sensuous", "word": "sensuous", "meaning": "Appealing to the senses" },
+      { "id": "sentinel", "word": "sentinel", "meaning": "A sentry or one who keeps watch" },
+      { "id": "contiguous", "word": "contiguous", "meaning": "Adjoining or sharing a boundary" },
+      { "id": "tangible", "word": "tangible", "meaning": "Perceptible by sense of touch; clear and definitive; real" },
+      { "id": "tactile", "word": "tactile", "meaning": "Pertaining to or using the sense of touch" },
+      { "id": "tangent", "word": "tangent", "meaning": "Touching; irrelevant or off subject; a sudden change of direction" }
+    ],
+    "definitionMCQs": [
+      {
+        "id": "def-assent",
+        "question": "What does “assent” mean?",
+        "choices": [
+          "to refuse strongly",
+          "to express agreement",
+          "to forget on purpose",
+          "to argue loudly"
+        ],
+        "correctIndex": 1,
+        "explanation": "Assent means to agree or give consent."
+      },
+      {
+        "id": "def-dissent",
+        "question": "What does “dissent” mean?",
+        "choices": [
+          "to disagree or have a different opinion",
+          "to agree immediately",
+          "to explain a joke",
+          "to write neatly"
+        ],
+        "correctIndex": 0,
+        "explanation": "Dissent means to disagree or think differently."
+      },
+      {
+        "id": "def-presentiment",
+        "question": "What is a “presentiment”?",
+        "choices": [
+          "a gift given at a party",
+          "a detailed plan for the future",
+          "a sense that something is about to happen",
+          "a loud celebration"
+        ],
+        "correctIndex": 2,
+        "explanation": "A presentiment is a feeling that something is about to happen."
+      },
+      {
+        "id": "def-sensuous",
+        "question": "What does “sensuous” mean?",
+        "choices": [
+          "appealing to the senses",
+          "difficult to understand",
+          "made of metal",
+          "careless and messy"
+        ],
+        "correctIndex": 0,
+        "explanation": "Sensuous describes something that pleases the senses (like smell, taste, touch, sight, or sound)."
+      },
+      {
+        "id": "def-sentinel",
+        "question": "What is a “sentinel”?",
+        "choices": [
+          "a type of instrument",
+          "a person who keeps watch",
+          "a special kind of sandwich",
+          "a map that shows roads"
+        ],
+        "correctIndex": 1,
+        "explanation": "A sentinel is someone (or something) that stands guard and watches for danger."
+      },
+      {
+        "id": "def-contiguous",
+        "question": "What does “contiguous” mean?",
+        "choices": [
+          "broken into pieces",
+          "far away from everything",
+          "adjoining or sharing a boundary",
+          "changing all the time"
+        ],
+        "correctIndex": 2,
+        "explanation": "Contiguous means next to or touching along a border."
+      },
+      {
+        "id": "def-tangible",
+        "question": "What does “tangible” mean?",
+        "choices": [
+          "imaginary and not real",
+          "real, clear, or able to be touched",
+          "too loud to hear",
+          "too fast to catch"
+        ],
+        "correctIndex": 1,
+        "explanation": "Tangible can mean touchable or clearly real/definite."
+      },
+      {
+        "id": "def-tactile",
+        "question": "What does “tactile” relate to?",
+        "choices": [
+          "the sense of touch",
+          "the sense of hearing",
+          "the sense of taste",
+          "the sense of balance"
+        ],
+        "correctIndex": 0,
+        "explanation": "Tactile means connected to touch."
+      },
+      {
+        "id": "def-tangent",
+        "question": "What is a “tangent” in a conversation?",
+        "choices": [
+          "a short summary",
+          "an off-topic change of direction",
+          "a helpful example",
+          "a quiet pause"
+        ],
+        "correctIndex": 1,
+        "explanation": "A tangent is when someone suddenly goes off topic."
+      }
+    ],
+    "usageMCQs": [
+      {
+        "id": "use-assent",
+        "prompt": "Pick the sentence that uses “assent” correctly.",
+        "word": "assent",
+        "choices": [
+          "The class gave its assent by nodding and saying yes.",
+          "He assent the basketball into the hoop.",
+          "She felt assent because the room was cold.",
+          "The assent ran quickly down the hallway."
+        ],
+        "correctIndex": 0,
+        "explanation": "Assent means agreement or consent."
+      },
+      {
+        "id": "use-dissent",
+        "prompt": "Pick the sentence that uses “dissent” correctly.",
+        "word": "dissent",
+        "choices": [
+          "Several students voiced dissent about the new phone policy.",
+          "She dissent the paper into four equal parts.",
+          "The dissent was bright blue and shiny.",
+          "He dissent quietly, meaning he fully agreed."
+        ],
+        "correctIndex": 0,
+        "explanation": "Dissent means disagreement or a different opinion."
+      },
+      {
+        "id": "use-presentiment",
+        "prompt": "Pick the sentence that uses “presentiment” correctly.",
+        "word": "presentiment",
+        "choices": [
+          "I had a presentiment that something unexpected was about to happen.",
+          "She presentimented her homework in neat rows.",
+          "The presentiment is a tool used to cut wood.",
+          "He bought a presentiment at the grocery store."
+        ],
+        "correctIndex": 0,
+        "explanation": "A presentiment is a feeling or sense that something will happen soon."
+      },
+      {
+        "id": "use-sensuous",
+        "prompt": "Pick the sentence that uses “sensuous” correctly.",
+        "word": "sensuous",
+        "choices": [
+          "The sensuous smell of popcorn filled the theater.",
+          "He sensuous the answer without thinking.",
+          "The sensuous was late to practice again.",
+          "She wore a sensuous to school like a backpack."
+        ],
+        "correctIndex": 0,
+        "explanation": "Sensuous describes something that appeals to the senses."
+      },
+      {
+        "id": "use-sentinel",
+        "prompt": "Pick the sentence that uses “sentinel” correctly.",
+        "word": "sentinel",
+        "choices": [
+          "A sentinel stood at the gate to keep watch.",
+          "She sentinel the soup until it boiled.",
+          "The sentinel is a kind of skateboard trick.",
+          "He felt sentinel after finishing the test."
+        ],
+        "correctIndex": 0,
+        "explanation": "A sentinel is a guard or watcher."
+      },
+      {
+        "id": "use-contiguous",
+        "prompt": "Pick the sentence that uses “contiguous” correctly.",
+        "word": "contiguous",
+        "choices": [
+          "Our backyard is contiguous with the park, so we share a fence.",
+          "She contiguous her notes to make them louder.",
+          "The contiguous was delicious with ketchup.",
+          "He felt contiguous because he was tired."
+        ],
+        "correctIndex": 0,
+        "explanation": "Contiguous means next to each other or sharing a border."
+      },
+      {
+        "id": "use-tangible",
+        "prompt": "Pick the sentence that uses “tangible” correctly.",
+        "word": "tangible",
+        "choices": [
+          "After weeks of practice, her improvement was tangible and easy to see.",
+          "He tangible the hallway to find his locker.",
+          "The tangible was angry at the weather.",
+          "She wore a tangible on her wrist like a watch."
+        ],
+        "correctIndex": 0,
+        "explanation": "Tangible means real/clear or something you can touch."
+      },
+      {
+        "id": "use-tactile",
+        "prompt": "Pick the sentence that uses “tactile” correctly.",
+        "word": "tactile",
+        "choices": [
+          "The tactile buttons were easier to use than the smooth touchscreen.",
+          "She tactile the music so it played louder.",
+          "The tactile sprinted to the bus stop.",
+          "He felt tactile because he skipped breakfast."
+        ],
+        "correctIndex": 0,
+        "explanation": "Tactile relates to touch."
+      },
+      {
+        "id": "use-tangent",
+        "prompt": "Pick the sentence that uses “tangent” correctly.",
+        "word": "tangent",
+        "choices": [
+          "In the middle of the discussion, he went off on a tangent about video games.",
+          "She tangent the paper into a perfect circle.",
+          "The tangent was a sandwich with extra cheese.",
+          "He felt tangent because the room was noisy."
+        ],
+        "correctIndex": 0,
+        "explanation": "A tangent is an off-topic change in direction during a conversation."
       }
     ]
   }
