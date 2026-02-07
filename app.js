@@ -1,10 +1,11 @@
-/* Vocab Study - app.js
-   - Imported decks: saved in localStorage
-   - Built-in decks (decks.json): fetched online, cached as "last known good"
-   - Offline: uses last known good built-in decks + imported decks
+/* Vocab Study - app.js (LATEST CLEAN)
+   - No "Offline Ready" indicator (removed)
+   - Keeps offline behavior:
+       * Service worker caches app shell (sw.js)
+       * Built-in decks (decks.json) are saved as "last known good" in localStorage
+       * Offline shows last saved built-in decks + imported decks
    - Quiz choices are shuffled at runtime every time you start a quiz
-   - Parent Mode includes "Force Update (Fix App)" to clear SW + caches and reload
-   - Home shows "Offline Ready" indicator (checks Cache Storage for the shell)
+   - Parent Mode includes "Force Update (Fix App)"
 */
 
 // ---------- LocalStorage keys ----------
@@ -12,13 +13,14 @@ const LS_IMPORTED = "vocabStudyImportedDecks_v2";
 const LS_LAST_BUILTIN = "vocabStudyLastBuiltinDecks_v2";
 const LS_LAST_BUILTIN_AT = "vocabStudyLastBuiltinLoadedAt_v2";
 
-// IMPORTANT: Must match your sw.js CACHE value
-const SW_SHELL_CACHE_NAME = "vocab-study-shell-v5";
-
 // ---------- Storage helpers ----------
 function safeJSONParse(s, fallback) {
   if (s === null || s === "null" || s === "undefined") return fallback;
-  try { return JSON.parse(s); } catch { return fallback; }
+  try {
+    return JSON.parse(s);
+  } catch {
+    return fallback;
+  }
 }
 
 function getImportedDecks() {
@@ -57,6 +59,7 @@ function shuffleArrayInPlace(arr) {
 }
 
 function shuffledQuestion(q) {
+  // Clone question so we don't mutate source deck data
   const clone = { ...q };
 
   const choices = Array.isArray(q.choices) ? [...q.choices] : [];
@@ -69,8 +72,8 @@ function shuffledQuestion(q) {
 
   shuffleArrayInPlace(tagged);
 
-  clone.choices = tagged.map(x => x.text);
-  clone.correctIndex = tagged.findIndex(x => x.isCorrect);
+  clone.choices = tagged.map((x) => x.text);
+  clone.correctIndex = tagged.findIndex((x) => x.isCorrect);
 
   return clone;
 }
@@ -106,7 +109,6 @@ const titleEl = document.getElementById("title");
 const backBtn = document.getElementById("backBtn");
 const parentBtn = document.getElementById("parentBtn");
 const statusLine = document.getElementById("statusLine");
-const offlineReadyValue = document.getElementById("offlineReadyValue");
 
 const deckList = document.getElementById("deckList");
 const deckTitle = document.getElementById("deckTitle");
@@ -134,7 +136,7 @@ const forceUpdateBtn = document.getElementById("forceUpdateBtn");
 
 // ---------- Navigation ----------
 function show(viewName, headerTitle) {
-  Object.values(views).forEach(v => v.classList.add("hidden"));
+  Object.values(views).forEach((v) => v.classList.add("hidden"));
   views[viewName].classList.remove("hidden");
   titleEl.textContent = headerTitle || "Vocab Study";
   backBtn.classList.toggle("hidden", viewName === "home");
@@ -143,7 +145,6 @@ function show(viewName, headerTitle) {
 function showHome() {
   currentDeck = null;
   show("home", "Vocab Study");
-  updateOfflineReadyIndicator();
 }
 
 function showDeck() {
@@ -164,38 +165,10 @@ parentBtn.addEventListener("click", () => {
   show("parent", "Parent Mode");
 });
 
-// ---------- Offline Ready indicator (iOS-friendly: no caches.has) ----------
-async function updateOfflineReadyIndicator() {
-  if (!offlineReadyValue) return;
-
-  if (!("caches" in window)) {
-    offlineReadyValue.textContent = "Unknown";
-    return;
-  }
-
-  offlineReadyValue.textContent = "Checking…";
-
-  try {
-    const names = await caches.keys(); // supported broadly
-    if (!names.includes(SW_SHELL_CACHE_NAME)) {
-      offlineReadyValue.textContent = "No (open once online)";
-      return;
-    }
-
-    const cache = await caches.open(SW_SHELL_CACHE_NAME);
-    const reqs = await cache.keys();
-
-    offlineReadyValue.textContent = (reqs && reqs.length)
-      ? "Yes"
-      : "No (open once online)";
-  } catch {
-    offlineReadyValue.textContent = "Unknown";
-  }
-}
-
 // ---------- Deck loading ----------
 async function loadBuiltinDecks() {
   try {
+    // sw.js is designed to NOT cache decks.json; we still use no-store for best effort freshness.
     const res = await fetch("./decks.json", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
@@ -222,11 +195,14 @@ function rebuildDeckList() {
     return;
   }
 
-  decks.forEach(d => {
+  decks.forEach((d) => {
     const btn = document.createElement("button");
     btn.className = "choiceBtn";
     btn.textContent = d.title;
-    btn.onclick = () => { currentDeck = d; showDeck(); };
+    btn.onclick = () => {
+      currentDeck = d;
+      showDeck();
+    };
     deckList.appendChild(btn);
   });
 }
@@ -307,7 +283,10 @@ function startQuiz(mode) {
   quizMode = mode;
   const src = getQuizSource(mode);
 
+  // Always shuffle choices & correctIndex at runtime, every quiz start
   quizOrder = src.map(shuffledQuestion);
+
+  // Shuffle question order if Shuffle toggle is ON
   if (shuffleOn) shuffleArrayInPlace(quizOrder);
 
   quizIndex = 0;
@@ -383,6 +362,7 @@ nextQuestionBtn.addEventListener("click", () => {
     quizIndex += 1;
     renderQuizQuestion();
   } else {
+    // Restart same mode (new choice-shuffle each restart)
     startQuiz(quizMode);
   }
 });
@@ -396,9 +376,11 @@ fileInput.addEventListener("change", async (e) => {
     const text = await file.text();
     const parsed = JSON.parse(text);
 
+    // Accept either a single deck object or an array of decks
     const newDecks = Array.isArray(parsed) ? parsed : [parsed];
 
-    newDecks.forEach(d => {
+    // Light validation / normalization
+    newDecks.forEach((d) => {
       if (!d || typeof d.id !== "string" || typeof d.title !== "string") {
         throw new Error("Each deck must have id and title");
       }
@@ -408,8 +390,8 @@ fileInput.addEventListener("change", async (e) => {
     });
 
     const imported = getImportedDecks();
-    newDecks.forEach(nd => {
-      const idx = imported.findIndex(d => d.id === nd.id);
+    newDecks.forEach((nd) => {
+      const idx = imported.findIndex((d) => d.id === nd.id);
       if (idx >= 0) imported[idx] = nd;
       else imported.unshift(nd);
     });
@@ -437,7 +419,7 @@ function renderImportedList() {
     return;
   }
 
-  imported.forEach(d => {
+  imported.forEach((d) => {
     const row = document.createElement("div");
     row.className = "row";
 
@@ -449,7 +431,7 @@ function renderImportedList() {
     del.type = "button";
     del.textContent = "Delete";
     del.onclick = () => {
-      const next = getImportedDecks().filter(x => x.id !== d.id);
+      const next = getImportedDecks().filter((x) => x.id !== d.id);
       setImportedDecks(next);
       renderImportedList();
       rebuildDeckList();
@@ -475,36 +457,43 @@ if (resetImportedBtn) {
 async function forceUpdateFixApp() {
   const ok = confirm(
     "Force Update will clear cached app files and reload the latest version.\n\n" +
-    "It will NOT delete your imported decks or your saved offline decks.\n\n" +
-    "Continue?"
+      "It will NOT delete your imported decks or your saved offline decks.\n\n" +
+      "Continue?"
   );
   if (!ok) return;
 
+  // Unregister service workers (best effort)
   try {
     if ("serviceWorker" in navigator) {
       const regs = await navigator.serviceWorker.getRegistrations();
-      await Promise.all(regs.map(r => r.unregister()));
+      await Promise.all(regs.map((r) => r.unregister()));
     }
   } catch {}
 
+  // Clear Cache Storage (best effort)
   try {
     if ("caches" in window) {
       const keys = await caches.keys();
-      await Promise.all(keys.map(k => caches.delete(k)));
+      await Promise.all(keys.map((k) => caches.delete(k)));
     }
   } catch {}
 
+  // Reload with cache-busting param
   const url = new URL(window.location.href);
   url.searchParams.set("force", String(Date.now()));
   window.location.replace(url.toString());
 }
 
 if (forceUpdateBtn) {
-  forceUpdateBtn.addEventListener("click", () => forceUpdateFixApp());
+  forceUpdateBtn.addEventListener("click", () => {
+    forceUpdateFixApp();
+  });
 }
 
 // ---------- Wire up buttons ----------
-shuffleToggle.addEventListener("change", () => { shuffleOn = shuffleToggle.checked; });
+shuffleToggle.addEventListener("change", () => {
+  shuffleOn = shuffleToggle.checked;
+});
 flashBtn.addEventListener("click", startFlashcards);
 defQuizBtn.addEventListener("click", () => startQuiz("def"));
 useQuizBtn.addEventListener("click", () => startQuiz("use"));
@@ -515,11 +504,5 @@ useQuizBtn.addEventListener("click", () => startQuiz("use"));
   builtinDecks = result.decks;
   rebuildDeckList();
   updateStatusLine(result.source);
-
-  // Update Offline Ready indicator once SW is ready (best effort)
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.ready.then(() => updateOfflineReadyIndicator()).catch(() => {});
-  }
-
   showHome();
 })();
