@@ -1,5 +1,9 @@
 In sw.js need to change line 5 everytime you make a UI change
 
+New vocab? → edit decks.json → commit → reload app
+Logic/UI tweaks? → edit app.js / styles.css → commit → reload app
+Offline shell changes? → edit sw.js → bump cache version
+iPhone acting weird? → Parent Mode → Force Update (Fix App)
 
 
 In Decks.json can you make this vocab-set-11 and produce the full definition and usage examples for all?
