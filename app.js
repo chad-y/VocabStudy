@@ -13,7 +13,6 @@ const LS_LAST_BUILTIN = "vocabStudyLastBuiltinDecks_v2";
 const LS_LAST_BUILTIN_AT = "vocabStudyLastBuiltinLoadedAt_v2";
 
 // IMPORTANT: Must match your sw.js CACHE value
-// If you change sw.js CACHE, update this constant too.
 const SW_SHELL_CACHE_NAME = "vocab-study-shell-v5";
 
 // ---------- Storage helpers ----------
@@ -144,7 +143,6 @@ function show(viewName, headerTitle) {
 function showHome() {
   currentDeck = null;
   show("home", "Vocab Study");
-  // Update Offline Ready indicator whenever we return home
   updateOfflineReadyIndicator();
 }
 
@@ -166,27 +164,30 @@ parentBtn.addEventListener("click", () => {
   show("parent", "Parent Mode");
 });
 
-// ---------- Offline Ready indicator ----------
+// ---------- Offline Ready indicator (iOS-friendly: no caches.has) ----------
 async function updateOfflineReadyIndicator() {
   if (!offlineReadyValue) return;
 
-  // If Cache API isn't available, just be honest.
   if (!("caches" in window)) {
     offlineReadyValue.textContent = "Unknown";
     return;
   }
 
+  offlineReadyValue.textContent = "Checking…";
+
   try {
-    const hasShellCache = await caches.has(SW_SHELL_CACHE_NAME);
-    if (!hasShellCache) {
+    const names = await caches.keys(); // supported broadly
+    if (!names.includes(SW_SHELL_CACHE_NAME)) {
       offlineReadyValue.textContent = "No (open once online)";
       return;
     }
 
-    // Ensure the cache actually has entries (some edge cases can create empty caches)
     const cache = await caches.open(SW_SHELL_CACHE_NAME);
-    const keys = await cache.keys();
-    offlineReadyValue.textContent = keys && keys.length ? "Yes" : "No (open once online)";
+    const reqs = await cache.keys();
+
+    offlineReadyValue.textContent = (reqs && reqs.length)
+      ? "Yes"
+      : "No (open once online)";
   } catch {
     offlineReadyValue.textContent = "Unknown";
   }
@@ -479,7 +480,6 @@ async function forceUpdateFixApp() {
   );
   if (!ok) return;
 
-  // Unregister service workers (best effort)
   try {
     if ("serviceWorker" in navigator) {
       const regs = await navigator.serviceWorker.getRegistrations();
@@ -487,7 +487,6 @@ async function forceUpdateFixApp() {
     }
   } catch {}
 
-  // Clear Cache Storage (best effort)
   try {
     if ("caches" in window) {
       const keys = await caches.keys();
@@ -495,16 +494,13 @@ async function forceUpdateFixApp() {
     }
   } catch {}
 
-  // Reload with cache-busting param
   const url = new URL(window.location.href);
   url.searchParams.set("force", String(Date.now()));
   window.location.replace(url.toString());
 }
 
 if (forceUpdateBtn) {
-  forceUpdateBtn.addEventListener("click", () => {
-    forceUpdateFixApp();
-  });
+  forceUpdateBtn.addEventListener("click", () => forceUpdateFixApp());
 }
 
 // ---------- Wire up buttons ----------
@@ -520,6 +516,10 @@ useQuizBtn.addEventListener("click", () => startQuiz("use"));
   rebuildDeckList();
   updateStatusLine(result.source);
 
-  // Show home (also updates Offline Ready indicator)
+  // Update Offline Ready indicator once SW is ready (best effort)
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.ready.then(() => updateOfflineReadyIndicator()).catch(() => {});
+  }
+
   showHome();
 })();
