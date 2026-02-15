@@ -8,6 +8,8 @@ iPhone acting weird? → Parent Mode → Force Update (Fix App)
 
 In Decks.json can you make this vocab-set-11 and produce the full definition and usage examples for all?
 
+Chapter 11
+==========
 Ad hoc - For a specific purpose or situation
 Admonish - To scold gently but firmly; To warn
 Assimilate - To digest; To become similar or part of a whole
@@ -21,6 +23,8 @@ Provocative - Exciting or stimulating
 Vociferous - Making an outcry; Protest
 
 
+Chapter 12
+==========
 Assent - To consent; to express agreement
 Dissent - To have or express a different opinion; to disagree
 Presentiment - A sense of something about to happen
@@ -30,3 +34,17 @@ Contiguous - Adjoining or sharing a boundary
 Tangible - Perceptible by sense of touch; Clear and definitive; Real
 Tactile - Pertaining to or using the sense of touch
 Tangent - Touching; Irrelevant or off subject; A sudden change of direction
+
+Chapter 13
+==========
+Procrastinate - To put off doing something
+Prodigal - Wasteful or extra; "a lot of" or "very fancy"
+Prodigy - Person with exceptional talent or powers
+Profane - Showing disrespect toward God or sacred things; Nonreligious in use
+Profuse - Plentiful; giving abundantly
+Jeopardy - Danger
+Jocular - Joking
+Assuage - To soothe or make less severe; To satisfy
+Suave - Smooth in a social manner
+Festoon - A decorative chain of flowers, leaves or ribbons hung in a curve
+Fete - A party or festival, especially one held outdoors; To give a party in someone's honor

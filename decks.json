@@ -3,17 +3,61 @@
     "id": "chapter-11",
     "title": "Chapter 11 (Ad hoc–Vociferous)",
     "cards": [
-      { "id": "ad-hoc", "word": "ad hoc", "meaning": "For a specific purpose or situation" },
-      { "id": "admonish", "word": "admonish", "meaning": "To scold gently but firmly; to warn" },
-      { "id": "assimilate", "word": "assimilate", "meaning": "To digest; to become similar or part of a whole" },
-      { "id": "olfactory", "word": "olfactory", "meaning": "Pertaining to the sense of smell" },
-      { "id": "redolent", "word": "redolent", "meaning": "Smelling strongly; full of memories" },
-      { "id": "resonate", "word": "resonate", "meaning": "To produce sound vibrations; to echo" },
-      { "id": "sonic", "word": "sonic", "meaning": "Pertaining to sound waves or audible sounds" },
-      { "id": "advocate", "word": "advocate", "meaning": "To speak in favor of something or recommend; a supporter of a cause" },
-      { "id": "evoke", "word": "evoke", "meaning": "To summon, inspire, or produce a reaction" },
-      { "id": "provocative", "word": "provocative", "meaning": "Exciting or stimulating" },
-      { "id": "vociferous", "word": "vociferous", "meaning": "Making a loud outcry or protest" }
+      {
+        "id": "ad-hoc",
+        "word": "ad hoc",
+        "meaning": "For a specific purpose or situation"
+      },
+      {
+        "id": "admonish",
+        "word": "admonish",
+        "meaning": "To scold gently but firmly; to warn"
+      },
+      {
+        "id": "assimilate",
+        "word": "assimilate",
+        "meaning": "To digest; to become similar or part of a whole"
+      },
+      {
+        "id": "olfactory",
+        "word": "olfactory",
+        "meaning": "Pertaining to the sense of smell"
+      },
+      {
+        "id": "redolent",
+        "word": "redolent",
+        "meaning": "Smelling strongly; full of memories"
+      },
+      {
+        "id": "resonate",
+        "word": "resonate",
+        "meaning": "To produce sound vibrations; to echo"
+      },
+      {
+        "id": "sonic",
+        "word": "sonic",
+        "meaning": "Pertaining to sound waves or audible sounds"
+      },
+      {
+        "id": "advocate",
+        "word": "advocate",
+        "meaning": "To speak in favor of something or recommend; a supporter of a cause"
+      },
+      {
+        "id": "evoke",
+        "word": "evoke",
+        "meaning": "To summon, inspire, or produce a reaction"
+      },
+      {
+        "id": "provocative",
+        "word": "provocative",
+        "meaning": "Exciting or stimulating"
+      },
+      {
+        "id": "vociferous",
+        "word": "vociferous",
+        "meaning": "Making a loud outcry or protest"
+      }
     ],
     "definitionMCQs": [
       {
@@ -299,15 +343,51 @@
     "id": "chapter-12",
     "title": "Chapter 12 (Assent–Tangent)",
     "cards": [
-      { "id": "assent", "word": "assent", "meaning": "To consent; to express agreement" },
-      { "id": "dissent", "word": "dissent", "meaning": "To have or express a different opinion; to disagree" },
-      { "id": "presentiment", "word": "presentiment", "meaning": "A sense that something is about to happen" },
-      { "id": "sensuous", "word": "sensuous", "meaning": "Appealing to the senses" },
-      { "id": "sentinel", "word": "sentinel", "meaning": "A sentry or one who keeps watch" },
-      { "id": "contiguous", "word": "contiguous", "meaning": "Adjoining or sharing a boundary" },
-      { "id": "tangible", "word": "tangible", "meaning": "Perceptible by sense of touch; clear and definitive; real" },
-      { "id": "tactile", "word": "tactile", "meaning": "Pertaining to or using the sense of touch" },
-      { "id": "tangent", "word": "tangent", "meaning": "Touching; irrelevant or off subject; a sudden change of direction" }
+      {
+        "id": "assent",
+        "word": "assent",
+        "meaning": "To consent; to express agreement"
+      },
+      {
+        "id": "dissent",
+        "word": "dissent",
+        "meaning": "To have or express a different opinion; to disagree"
+      },
+      {
+        "id": "presentiment",
+        "word": "presentiment",
+        "meaning": "A sense that something is about to happen"
+      },
+      {
+        "id": "sensuous",
+        "word": "sensuous",
+        "meaning": "Appealing to the senses"
+      },
+      {
+        "id": "sentinel",
+        "word": "sentinel",
+        "meaning": "A sentry or one who keeps watch"
+      },
+      {
+        "id": "contiguous",
+        "word": "contiguous",
+        "meaning": "Adjoining or sharing a boundary"
+      },
+      {
+        "id": "tangible",
+        "word": "tangible",
+        "meaning": "Perceptible by sense of touch; clear and definitive; real"
+      },
+      {
+        "id": "tactile",
+        "word": "tactile",
+        "meaning": "Pertaining to or using the sense of touch"
+      },
+      {
+        "id": "tangent",
+        "word": "tangent",
+        "meaning": "Touching; irrelevant or off subject; a sudden change of direction"
+      }
     ],
     "definitionMCQs": [
       {
@@ -536,6 +616,346 @@
         ],
         "correctIndex": 0,
         "explanation": "A tangent is an off-topic change in direction during a conversation."
+      }
+    ]
+  },
+  {
+    "id": "chapter-13",
+    "title": "Chapter 13 (Procrastinate–Fete)",
+    "cards": [
+      {
+        "id": "procrastinate",
+        "word": "procrastinate",
+        "meaning": "To put off doing something"
+      },
+      {
+        "id": "prodigal",
+        "word": "prodigal",
+        "meaning": "Wasteful or extra; \"a lot of\" or \"very fancy\""
+      },
+      {
+        "id": "prodigy",
+        "word": "prodigy",
+        "meaning": "Person with exceptional talent or powers"
+      },
+      {
+        "id": "profane",
+        "word": "profane",
+        "meaning": "Showing disrespect toward God or sacred things; Nonreligious in use"
+      },
+      {
+        "id": "profuse",
+        "word": "profuse",
+        "meaning": "Plentiful; giving abundantly"
+      },
+      {
+        "id": "jeopardy",
+        "word": "jeopardy",
+        "meaning": "Danger"
+      },
+      {
+        "id": "jocular",
+        "word": "jocular",
+        "meaning": "Joking"
+      },
+      {
+        "id": "assuage",
+        "word": "assuage",
+        "meaning": "To soothe or make less severe; To satisfy"
+      },
+      {
+        "id": "suave",
+        "word": "suave",
+        "meaning": "Smooth in a social manner"
+      },
+      {
+        "id": "festoon",
+        "word": "festoon",
+        "meaning": "A decorative chain of flowers, leaves or ribbons hung in a curve"
+      },
+      {
+        "id": "fete",
+        "word": "fete",
+        "meaning": "A party or festival, especially one held outdoors; To give a party in someone's honor"
+      }
+    ],
+    "definitionMCQs": [
+      {
+        "id": "def-procrastinate",
+        "question": "What does “procrastinate” mean?",
+        "choices": [
+          "to put off doing something",
+          "to finish early",
+          "to organize carefully",
+          "to forget completely"
+        ],
+        "correctIndex": 0,
+        "explanation": "Procrastinate means to put off doing something."
+      },
+      {
+        "id": "def-prodigal",
+        "question": "What does “prodigal” mean?",
+        "choices": [
+          "wasteful; extravagant",
+          "very cautious with money",
+          "quiet and shy",
+          "extremely small"
+        ],
+        "correctIndex": 0,
+        "explanation": "Prodigal means wasteful; extravagant."
+      },
+      {
+        "id": "def-prodigy",
+        "question": "What does “prodigy” mean?",
+        "choices": [
+          "a person with exceptional talent",
+          "a person who is always late",
+          "a strict teacher",
+          "a noisy celebration"
+        ],
+        "correctIndex": 0,
+        "explanation": "Prodigy means a person with exceptional talent."
+      },
+      {
+        "id": "def-profane",
+        "question": "What does “profane” mean?",
+        "choices": [
+          "disrespectful toward sacred things; nonreligious",
+          "related to cooking",
+          "deeply religious and holy",
+          "careful and polite"
+        ],
+        "correctIndex": 0,
+        "explanation": "Profane means disrespectful toward sacred things; nonreligious."
+      },
+      {
+        "id": "def-profuse",
+        "question": "What does “profuse” mean?",
+        "choices": [
+          "plentiful; giving abundantly",
+          "slow and sleepy",
+          "rare and scarce",
+          "angry and rude"
+        ],
+        "correctIndex": 0,
+        "explanation": "Profuse means plentiful; giving abundantly."
+      },
+      {
+        "id": "def-jeopardy",
+        "question": "What does “jeopardy” mean?",
+        "choices": [
+          "danger",
+          "a reward",
+          "a joke",
+          "a solution"
+        ],
+        "correctIndex": 0,
+        "explanation": "Jeopardy means danger."
+      },
+      {
+        "id": "def-jocular",
+        "question": "What does “jocular” mean?",
+        "choices": [
+          "easily frightened",
+          "joking; humorous",
+          "very serious",
+          "full of anger"
+        ],
+        "correctIndex": 1,
+        "explanation": "Jocular means joking; humorous."
+      },
+      {
+        "id": "def-assuage",
+        "question": "What does “assuage” mean?",
+        "choices": [
+          "to worsen a problem",
+          "to soothe or make less severe; to satisfy",
+          "to accuse someone",
+          "to measure exactly"
+        ],
+        "correctIndex": 1,
+        "explanation": "Assuage means to soothe or make less severe; to satisfy."
+      },
+      {
+        "id": "def-suave",
+        "question": "What does “suave” mean?",
+        "choices": [
+          "clumsy and awkward",
+          "rough and scratchy",
+          "smooth and confident in a social manner",
+          "lazy and tired"
+        ],
+        "correctIndex": 2,
+        "explanation": "Suave means smooth and confident in a social manner."
+      },
+      {
+        "id": "def-festoon",
+        "question": "What does “festoon” mean?",
+        "choices": [
+          "a loud argument",
+          "a sudden storm",
+          "a decorative chain hung in a curve",
+          "a type of homework"
+        ],
+        "correctIndex": 2,
+        "explanation": "Festoon means a decorative chain hung in a curve."
+      },
+      {
+        "id": "def-fete",
+        "question": "What does “fete” mean?",
+        "choices": [
+          "a punishment",
+          "a party or festival; to honor with a celebration",
+          "a long speech",
+          "a quiet study session"
+        ],
+        "correctIndex": 1,
+        "explanation": "Fete means a party or festival; to honor with a celebration."
+      }
+    ],
+    "usageMCQs": [
+      {
+        "id": "use-procrastinate",
+        "prompt": "Pick the sentence that uses “procrastinate” correctly.",
+        "word": "procrastinate",
+        "choices": [
+          "I decided to procrastinate and play games instead of starting my project.",
+          "We procrastinate the cake in the oven for ten minutes.",
+          "The dog procrastinated loudly at the mailman.",
+          "The teacher procrastinate the papers into neat piles."
+        ],
+        "correctIndex": 0,
+        "explanation": "To procrastinate means to delay doing something you should do."
+      },
+      {
+        "id": "use-prodigal",
+        "prompt": "Pick the sentence that uses “prodigal” correctly.",
+        "word": "prodigal",
+        "choices": [
+          "She prodigal the door open with her foot.",
+          "The prodigal homework was due on Friday.",
+          "The lake was prodigal and dried up overnight.",
+          "He was prodigal with his allowance and bought snacks every day."
+        ],
+        "correctIndex": 3,
+        "explanation": "Prodigal describes someone who is wasteful or extravagant."
+      },
+      {
+        "id": "use-prodigy",
+        "prompt": "Pick the sentence that uses “prodigy” correctly.",
+        "word": "prodigy",
+        "choices": [
+          "The prodigy of the room was painted bright blue.",
+          "He prodigy the ball across the court.",
+          "They served prodigy for dessert after dinner.",
+          "At age ten, she was a chess prodigy who could beat most adults."
+        ],
+        "correctIndex": 3,
+        "explanation": "A prodigy is a person with unusually great talent."
+      },
+      {
+        "id": "use-profane",
+        "prompt": "Pick the sentence that uses “profane” correctly.",
+        "word": "profane",
+        "choices": [
+          "She wore a profane to keep warm.",
+          "He profane his shoes before going outside.",
+          "The museum asked visitors not to use profane language near the chapel.",
+          "The profane homework made everyone laugh."
+        ],
+        "correctIndex": 2,
+        "explanation": "Profane means disrespectful toward sacred things (or nonreligious)."
+      },
+      {
+        "id": "use-profuse",
+        "prompt": "Pick the sentence that uses “profuse” correctly.",
+        "word": "profuse",
+        "choices": [
+          "She profuse the pencil to make it sharper.",
+          "After the long run, he gave profuse thanks to the coach for the water.",
+          "He felt profuse because the test was hard.",
+          "The profuse ran down the hallway to class."
+        ],
+        "correctIndex": 1,
+        "explanation": "Profuse can mean abundant, or given generously (like thanks or apologies)."
+      },
+      {
+        "id": "use-jeopardy",
+        "prompt": "Pick the sentence that uses “jeopardy” correctly.",
+        "word": "jeopardy",
+        "choices": [
+          "He jeopardy the book onto the shelf.",
+          "Skipping practice put her spot on the team in jeopardy.",
+          "The jeopardy was delicious with syrup.",
+          "We wore jeopardy jackets in the rain."
+        ],
+        "correctIndex": 1,
+        "explanation": "Jeopardy means danger or risk."
+      },
+      {
+        "id": "use-jocular",
+        "prompt": "Pick the sentence that uses “jocular” correctly.",
+        "word": "jocular",
+        "choices": [
+          "She jocular the paper into four pieces.",
+          "The jocular was late because it missed the bus.",
+          "His jocular comments made everyone laugh during lunch.",
+          "He wore a jocular to the party."
+        ],
+        "correctIndex": 2,
+        "explanation": "Jocular means joking and lighthearted."
+      },
+      {
+        "id": "use-assuage",
+        "prompt": "Pick the sentence that uses “assuage” correctly.",
+        "word": "assuage",
+        "choices": [
+          "She assuaged the homework onto the desk.",
+          "The assuage was a bright yellow flower.",
+          "He assuage the door closed with a slam.",
+          "A glass of water helped assuage her thirst after practice."
+        ],
+        "correctIndex": 3,
+        "explanation": "Assuage means to soothe something (like pain) or satisfy something (like thirst)."
+      },
+      {
+        "id": "use-suave",
+        "prompt": "Pick the sentence that uses “suave” correctly.",
+        "word": "suave",
+        "choices": [
+          "He gave a suave introduction and made the guests feel welcome.",
+          "She suave the scissors until they were shiny.",
+          "He felt suave because he was hungry.",
+          "The suave barked loudly all night."
+        ],
+        "correctIndex": 0,
+        "explanation": "Suave describes smooth, confident social behavior."
+      },
+      {
+        "id": "use-festoon",
+        "prompt": "Pick the sentence that uses “festoon” correctly.",
+        "word": "festoon",
+        "choices": [
+          "He festooned his math answers by guessing.",
+          "They festooned the porch with paper flowers for the celebration.",
+          "She festooned her backpack because it was heavy.",
+          "The festoon chased the cat around the yard."
+        ],
+        "correctIndex": 1,
+        "explanation": "To festoon is to decorate by hanging garlands or chains in curves."
+      },
+      {
+        "id": "use-fete",
+        "prompt": "Pick the sentence that uses “fete” correctly.",
+        "word": "fete",
+        "choices": [
+          "He felt fete when the room got cold.",
+          "The town held a fete in the park to honor the firefighters.",
+          "She feted the pencil to make it write better.",
+          "The fete ran quickly to catch the bus."
+        ],
+        "correctIndex": 1,
+        "explanation": "A fete is a festival/party; to fete someone is to honor them with a celebration."
       }
     ]
   }
