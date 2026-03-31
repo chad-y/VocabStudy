@@ -3,7 +3,7 @@
 // - app.js always loads fresh (fixes iOS stuck-on-old-JS issues)
 // - decks.json loads fresh when online; offline decks come from localStorage "last known good"
 
-const CACHE = "vocab-study-shell-v5";
+const CACHE = "vocab-study-shell-v6";
 
 const ASSETS = [
   "./",
