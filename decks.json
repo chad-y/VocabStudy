@@ -958,5 +958,285 @@
         "explanation": "A fete is a festival/party; to fete someone is to honor them with a celebration."
       }
     ]
+  },
+  {
+    "id": "chapter-14",
+    "title": "Chapter 14 (Condole–Zealot)",
+    "cards": [
+      {
+        "id": "condole",
+        "word": "condole",
+        "meaning": "To express sympathy."
+      },
+      {
+        "id": "doleful",
+        "word": "doleful",
+        "meaning": "Mournful; sad."
+      },
+      {
+        "id": "irascible",
+        "word": "irascible",
+        "meaning": "Irritable; hot tempered."
+      },
+      {
+        "id": "irate",
+        "word": "irate",
+        "meaning": "Angry; enraged."
+      },
+      {
+        "id": "ire",
+        "word": "ire",
+        "meaning": "Anger; rage."
+      },
+      {
+        "id": "malevolent",
+        "word": "malevolent",
+        "meaning": "Wishing harm to others."
+      },
+      {
+        "id": "volition",
+        "word": "volition",
+        "meaning": "A conscience choice."
+      },
+      {
+        "id": "zeal",
+        "word": "zeal",
+        "meaning": "Passionate devotion to a cause."
+      },
+      {
+        "id": "zealot",
+        "word": "zealot",
+        "meaning": "A zealous person; a fanatic."
+      }
+    ],
+    "definitionMCQs": [
+      {
+        "id": "def-condole",
+        "question": "What does “condole” mean?",
+        "choices": [
+          "to celebrate a victory",
+          "to express sympathy",
+          "to refuse help",
+          "to argue loudly"
+        ],
+        "correctIndex": 1,
+        "explanation": "Condole means to express sympathy."
+      },
+      {
+        "id": "def-doleful",
+        "question": "What does “doleful” mean?",
+        "choices": [
+          "excited and energetic",
+          "confusing and unclear",
+          "mournful; sad",
+          "tiny and weak"
+        ],
+        "correctIndex": 2,
+        "explanation": "Doleful means mournful; sad."
+      },
+      {
+        "id": "def-irascible",
+        "question": "What does “irascible” mean?",
+        "choices": [
+          "hungry for food",
+          "calm and patient",
+          "irritable; hot-tempered",
+          "full of ideas"
+        ],
+        "correctIndex": 2,
+        "explanation": "Irascible means irritable; hot-tempered."
+      },
+      {
+        "id": "def-irate",
+        "question": "What does “irate” mean?",
+        "choices": [
+          "sleepy and tired",
+          "careless and messy",
+          "polite and friendly",
+          "angry; enraged"
+        ],
+        "correctIndex": 3,
+        "explanation": "Irate means angry; enraged."
+      },
+      {
+        "id": "def-ire",
+        "question": "What does “ire” mean?",
+        "choices": [
+          "a quiet place",
+          "joy and laughter",
+          "a careful plan",
+          "anger; rage"
+        ],
+        "correctIndex": 3,
+        "explanation": "Ire means anger; rage."
+      },
+      {
+        "id": "def-malevolent",
+        "question": "What does “malevolent” mean?",
+        "choices": [
+          "wishing harm to others",
+          "related to music",
+          "wanting to help others",
+          "easily frightened"
+        ],
+        "correctIndex": 0,
+        "explanation": "Malevolent means wishing harm to others."
+      },
+      {
+        "id": "def-volition",
+        "question": "What does “volition” mean?",
+        "choices": [
+          "a sudden accident",
+          "a conscious choice; free will",
+          "a loud noise",
+          "a group of friends"
+        ],
+        "correctIndex": 1,
+        "explanation": "Volition means a conscious choice; free will."
+      },
+      {
+        "id": "def-zeal",
+        "question": "What does “zeal” mean?",
+        "choices": [
+          "a small mistake",
+          "passionate devotion to a cause",
+          "complete boredom",
+          "fear of heights"
+        ],
+        "correctIndex": 1,
+        "explanation": "Zeal means passionate devotion to a cause."
+      },
+      {
+        "id": "def-zealot",
+        "question": "What does “zealot” mean?",
+        "choices": [
+          "a fanatically zealous person",
+          "a slow runner",
+          "a gentle helper",
+          "a type of instrument"
+        ],
+        "correctIndex": 0,
+        "explanation": "Zealot means a fanatically zealous person."
+      }
+    ],
+    "usageMCQs": [
+      {
+        "id": "use-condole",
+        "prompt": "Pick the sentence that uses “condole” correctly.",
+        "word": "condole",
+        "choices": [
+          "We called to condole with her after she lost her pet.",
+          "He condole his homework into the backpack.",
+          "The rain condoled all afternoon.",
+          "They condole the balloons to the ceiling for the party."
+        ],
+        "correctIndex": 0,
+        "explanation": "To condole means to express sympathy to someone who is grieving."
+      },
+      {
+        "id": "use-doleful",
+        "prompt": "Pick the sentence that uses “doleful” correctly.",
+        "word": "doleful",
+        "choices": [
+          "We doleful the lights to make them brighter.",
+          "The dog wagged its tail in a doleful way because it was excited.",
+          "His doleful expression showed how disappointed he felt.",
+          "She doleful the book to make it longer."
+        ],
+        "correctIndex": 2,
+        "explanation": "Doleful means sad or mournful."
+      },
+      {
+        "id": "use-irascible",
+        "prompt": "Pick the sentence that uses “irascible” correctly.",
+        "word": "irascible",
+        "choices": [
+          "She wore an irascible to keep warm in winter.",
+          "The irascible of the song was very catchy.",
+          "The irascible coach snapped when the team kept talking.",
+          "We irascible the chairs into a circle."
+        ],
+        "correctIndex": 2,
+        "explanation": "Irascible describes someone who gets irritated or angry easily."
+      },
+      {
+        "id": "use-irate",
+        "prompt": "Pick the sentence that uses “irate” correctly.",
+        "word": "irate",
+        "choices": [
+          "She irated the paper into small pieces.",
+          "The irate of the sandwich was spicy.",
+          "We took an irate to the beach.",
+          "Dad was irate when he saw the broken window."
+        ],
+        "correctIndex": 3,
+        "explanation": "Irate means very angry."
+      },
+      {
+        "id": "use-ire",
+        "prompt": "Pick the sentence that uses “ire” correctly.",
+        "word": "ire",
+        "choices": [
+          "His rude comment stirred up the teacher’s ire.",
+          "She put the ire in the oven at 350 degrees.",
+          "We ired the music to make it louder.",
+          "The ire rolled down the hill and hit the fence."
+        ],
+        "correctIndex": 0,
+        "explanation": "Ire means anger or rage."
+      },
+      {
+        "id": "use-malevolent",
+        "prompt": "Pick the sentence that uses “malevolent” correctly.",
+        "word": "malevolent",
+        "choices": [
+          "We went malevolent to the park after school.",
+          "The story’s villain was malevolent and wanted everyone to suffer.",
+          "He malevolent the cookies to the table.",
+          "The malevolent notebook had 200 pages."
+        ],
+        "correctIndex": 1,
+        "explanation": "Malevolent means wishing harm to others."
+      },
+      {
+        "id": "use-volition",
+        "prompt": "Pick the sentence that uses “volition” correctly.",
+        "word": "volition",
+        "choices": [
+          "The volition fell off the shelf and broke.",
+          "We wore volition coats in the rain.",
+          "By my own volition, I chose to apologize and make things right.",
+          "She volitioned the door open with a key."
+        ],
+        "correctIndex": 2,
+        "explanation": "Volition is your power to choose; a conscious decision."
+      },
+      {
+        "id": "use-zeal",
+        "prompt": "Pick the sentence that uses “zeal” correctly.",
+        "word": "zeal",
+        "choices": [
+          "The zeal was a small stone in the road.",
+          "We bought zeal at the grocery store.",
+          "She worked with zeal to help the animal shelter succeed.",
+          "He zealed the homework into his folder."
+        ],
+        "correctIndex": 2,
+        "explanation": "Zeal means great enthusiasm or devotion to a cause."
+      },
+      {
+        "id": "use-zealot",
+        "prompt": "Pick the sentence that uses “zealot” correctly.",
+        "word": "zealot",
+        "choices": [
+          "She zealoted the paper into a neat stack.",
+          "He was a zealot for the team and never missed a game.",
+          "The zealot was a delicious dessert after dinner.",
+          "We rode a zealot to the top of the hill."
+        ],
+        "correctIndex": 1,
+        "explanation": "A zealot is someone who is extremely devoted—sometimes fanatically—to a cause."
+      }
+    ]
   }
 ]
