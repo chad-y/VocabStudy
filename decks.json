@@ -1238,5 +1238,285 @@
         "explanation": "A zealot is someone who is extremely devoted—sometimes fanatically—to a cause."
       }
     ]
+  },
+  {
+    "id": "chapter-15",
+    "title": "Chapter 15 (Circuitous–Encyclopedic)",
+    "cards": [
+      {
+        "id": "circuitous",
+        "word": "circuitous",
+        "meaning": "Roundabout; indirect."
+      },
+      {
+        "id": "circumspect",
+        "word": "circumspect",
+        "meaning": "Cautious and watchful; prudent."
+      },
+      {
+        "id": "circumference",
+        "word": "circumference",
+        "meaning": "Outer boundary of a circle; the perimeter."
+      },
+      {
+        "id": "orbit",
+        "word": "orbit",
+        "meaning": "Path of one body as it revolves around another body; Sphere of influence; a range of action or experience."
+      },
+      {
+        "id": "orb",
+        "word": "orb",
+        "meaning": "A sphere; anything spherical in shape."
+      },
+      {
+        "id": "configuration",
+        "word": "configuration",
+        "meaning": "A shape or outline; method of arrangement."
+      },
+      {
+        "id": "figurative",
+        "word": "figurative",
+        "meaning": "Using figures of speech; symbolic, not literal."
+      },
+      {
+        "id": "cyclic",
+        "word": "cyclic",
+        "meaning": "Occurring or moving in circles."
+      },
+      {
+        "id": "encyclopedic",
+        "word": "encyclopedic",
+        "meaning": "Possessing information about many subjects or intensively knowledgeable about one subject."
+      }
+    ],
+    "definitionMCQs": [
+      {
+        "id": "def-circuitous",
+        "question": "What does “circuitous” mean?",
+        "choices": [
+          "roundabout; indirect",
+          "easy to break",
+          "straight and direct",
+          "very loud"
+        ],
+        "correctIndex": 0,
+        "explanation": "Circuitous means roundabout; indirect."
+      },
+      {
+        "id": "def-circumspect",
+        "question": "What does “circumspect” mean?",
+        "choices": [
+          "cautious and watchful; prudent",
+          "confusing and unclear",
+          "careless and reckless",
+          "sleepy and slow"
+        ],
+        "correctIndex": 0,
+        "explanation": "Circumspect means cautious and watchful; prudent."
+      },
+      {
+        "id": "def-circumference",
+        "question": "What does “circumference” mean?",
+        "choices": [
+          "the inside area of a circle",
+          "the perimeter of a circle; the distance around it",
+          "the center point of a circle",
+          "the distance across a circle through the center"
+        ],
+        "correctIndex": 1,
+        "explanation": "Circumference means the perimeter of a circle; the distance around it."
+      },
+      {
+        "id": "def-orbit",
+        "question": "What does “orbit” mean?",
+        "choices": [
+          "a sudden loud noise",
+          "the path of one body as it revolves around another",
+          "a tool for measuring angles",
+          "a type of triangle"
+        ],
+        "correctIndex": 1,
+        "explanation": "Orbit means the path of one body as it revolves around another."
+      },
+      {
+        "id": "def-orb",
+        "question": "What does “orb” mean?",
+        "choices": [
+          "a sharp corner",
+          "a sphere; something round like a ball",
+          "a flat surface",
+          "a long line segment"
+        ],
+        "correctIndex": 1,
+        "explanation": "Orb means a sphere; something round like a ball."
+      },
+      {
+        "id": "def-configuration",
+        "question": "What does “configuration” mean?",
+        "choices": [
+          "a mistake you cannot fix",
+          "an arrangement; a shape or layout",
+          "a personal opinion",
+          "a sudden storm"
+        ],
+        "correctIndex": 1,
+        "explanation": "Configuration means an arrangement; a shape or layout."
+      },
+      {
+        "id": "def-figurative",
+        "question": "What does “figurative” mean?",
+        "choices": [
+          "made of metal",
+          "symbolic; not literal",
+          "exactly literal",
+          "related to numbers only"
+        ],
+        "correctIndex": 1,
+        "explanation": "Figurative means symbolic; not literal."
+      },
+      {
+        "id": "def-cyclic",
+        "question": "What does “cyclic” mean?",
+        "choices": [
+          "happening in cycles; moving in circles",
+          "never repeating",
+          "completely random",
+          "frozen in place"
+        ],
+        "correctIndex": 0,
+        "explanation": "Cyclic means happening in cycles; moving in circles."
+      },
+      {
+        "id": "def-encyclopedic",
+        "question": "What does “encyclopedic” mean?",
+        "choices": [
+          "knowing very little",
+          "being very shy",
+          "having a lot of knowledge about many subjects",
+          "being extremely hungry"
+        ],
+        "correctIndex": 2,
+        "explanation": "Encyclopedic means having a lot of knowledge about many subjects."
+      }
+    ],
+    "usageMCQs": [
+      {
+        "id": "use-circuitous",
+        "prompt": "Pick the sentence that uses “circuitous” correctly.",
+        "word": "circuitous",
+        "choices": [
+          "She circuitous the paper into four equal parts.",
+          "We took a circuitous route home to avoid traffic and construction.",
+          "He wore a circuitous to stay warm.",
+          "The circuitous of the soup made it taste spicy."
+        ],
+        "correctIndex": 1,
+        "explanation": "Circuitous describes an indirect, roundabout path or way of doing something."
+      },
+      {
+        "id": "use-circumspect",
+        "prompt": "Pick the sentence that uses “circumspect” correctly.",
+        "word": "circumspect",
+        "choices": [
+          "We bought circumspect at the store.",
+          "He circumspect the ball across the field.",
+          "The circumspect was painted bright blue.",
+          "She was circumspect and double-checked the directions before leaving."
+        ],
+        "correctIndex": 3,
+        "explanation": "Circumspect means cautious and careful."
+      },
+      {
+        "id": "use-circumference",
+        "prompt": "Pick the sentence that uses “circumference” correctly.",
+        "word": "circumference",
+        "choices": [
+          "The circumference is the number of corners on a square.",
+          "She circumference the book into her backpack.",
+          "We circumference the music to make it louder.",
+          "To find the circumference, we measured the distance around the circle."
+        ],
+        "correctIndex": 3,
+        "explanation": "Circumference means the distance around a circle."
+      },
+      {
+        "id": "use-orbit",
+        "prompt": "Pick the sentence that uses “orbit” correctly.",
+        "word": "orbit",
+        "choices": [
+          "He orbits the homework onto the desk.",
+          "The orbit of the sandwich was spicy.",
+          "She wore an orbit to the party.",
+          "The Moon stays in orbit around Earth because of gravity."
+        ],
+        "correctIndex": 3,
+        "explanation": "An orbit is the path something follows as it goes around another object."
+      },
+      {
+        "id": "use-orb",
+        "prompt": "Pick the sentence that uses “orb” correctly.",
+        "word": "orb",
+        "choices": [
+          "We orbed the chairs into a circle.",
+          "He orb the door closed with a slam.",
+          "The orb of the story was very funny.",
+          "The glass orb on the table reflected light like a tiny planet."
+        ],
+        "correctIndex": 3,
+        "explanation": "An orb is a sphere, or something ball-shaped."
+      },
+      {
+        "id": "use-configuration",
+        "prompt": "Pick the sentence that uses “configuration” correctly.",
+        "word": "configuration",
+        "choices": [
+          "She configuration the pencil to make it sharper.",
+          "He ate a configuration for breakfast.",
+          "The configuration barked at the mailman.",
+          "We changed the configuration of the desks so everyone could see the board."
+        ],
+        "correctIndex": 3,
+        "explanation": "Configuration means the arrangement or layout of parts."
+      },
+      {
+        "id": "use-figurative",
+        "prompt": "Pick the sentence that uses “figurative” correctly.",
+        "word": "figurative",
+        "choices": [
+          "When he said “I’m drowning in homework,” he meant it in a figurative way.",
+          "The figurative rock was heavier than the others.",
+          "We put figurative in the oven at 350 degrees.",
+          "She figurative the door open with her key."
+        ],
+        "correctIndex": 0,
+        "explanation": "Figurative language is symbolic and not meant literally."
+      },
+      {
+        "id": "use-cyclic",
+        "prompt": "Pick the sentence that uses “cyclic” correctly.",
+        "word": "cyclic",
+        "choices": [
+          "The seasons are cyclic, repeating in the same order each year.",
+          "She wore a cyclic to the beach.",
+          "The cyclic tasted sweet and crunchy.",
+          "He cyclic the paper into tiny pieces."
+        ],
+        "correctIndex": 0,
+        "explanation": "Cyclic describes something that repeats in cycles."
+      },
+      {
+        "id": "use-encyclopedic",
+        "prompt": "Pick the sentence that uses “encyclopedic” correctly.",
+        "word": "encyclopedic",
+        "choices": [
+          "Her encyclopedic knowledge helped her answer questions on many topics.",
+          "We rode an encyclopedic to school.",
+          "He encyclopedic the ball into the goal.",
+          "The encyclopedic was a bright yellow flower."
+        ],
+        "correctIndex": 0,
+        "explanation": "Encyclopedic describes someone who knows a lot about many subjects."
+      }
+    ]
   }
 ]
