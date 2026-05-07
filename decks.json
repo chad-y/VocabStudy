@@ -1518,5 +1518,345 @@
         "explanation": "Encyclopedic describes someone who knows a lot about many subjects."
       }
     ]
+  },
+  {
+    "id": "chapter-16",
+    "title": "Chapter 16 (Feign–Excavate)",
+    "cards": [
+      {
+        "id": "feign",
+        "word": "feign",
+        "meaning": "To pretend."
+      },
+      {
+        "id": "feint",
+        "word": "feint",
+        "meaning": "A misleading movement or pretended attack."
+      },
+      {
+        "id": "effigy",
+        "word": "effigy",
+        "meaning": "A sculpture or model of a person."
+      },
+      {
+        "id": "ideology",
+        "word": "ideology",
+        "meaning": "The main ideas of a class, group, or movement."
+      },
+      {
+        "id": "idyll",
+        "word": "idyll",
+        "meaning": "A short description of a peaceful or romantic scene, usually of country life."
+      },
+      {
+        "id": "rote",
+        "word": "rote",
+        "meaning": "By memory without thought of the meaning."
+      },
+      {
+        "id": "rotunda",
+        "word": "rotunda",
+        "meaning": "A circular domed building or hall."
+      },
+      {
+        "id": "rotund",
+        "word": "rotund",
+        "meaning": "Plump; rounded."
+      },
+      {
+        "id": "cavernous",
+        "word": "cavernous",
+        "meaning": "Like a large cave in size or darkness."
+      },
+      {
+        "id": "concave",
+        "word": "concave",
+        "meaning": "Curved like the inner surface of a ball."
+      },
+      {
+        "id": "excavate",
+        "word": "excavate",
+        "meaning": "To dig out; to make a hole by digging."
+      }
+    ],
+    "definitionMCQs": [
+      {
+        "id": "def-feign",
+        "question": "What does “feign” mean?",
+        "choices": [
+          "to confess the truth",
+          "to pretend",
+          "to fix carefully",
+          "to argue loudly"
+        ],
+        "correctIndex": 1,
+        "explanation": "Feign means to pretend."
+      },
+      {
+        "id": "def-feint",
+        "question": "What does “feint” mean?",
+        "choices": [
+          "a misleading movement; a fake attack",
+          "a real apology",
+          "a heavy rainstorm",
+          "a type of sandwich"
+        ],
+        "correctIndex": 0,
+        "explanation": "Feint means a misleading movement; a fake attack."
+      },
+      {
+        "id": "def-effigy",
+        "question": "What does “effigy” mean?",
+        "choices": [
+          "a small insect",
+          "a loud cheer",
+          "a secret plan",
+          "a sculpture or model of a person"
+        ],
+        "correctIndex": 3,
+        "explanation": "Effigy means a sculpture or model of a person."
+      },
+      {
+        "id": "def-ideology",
+        "question": "What does “ideology” mean?",
+        "choices": [
+          "a person’s height",
+          "a set of main ideas or beliefs of a group",
+          "a type of weather pattern",
+          "a musical instrument"
+        ],
+        "correctIndex": 1,
+        "explanation": "Ideology means a set of main ideas or beliefs of a group."
+      },
+      {
+        "id": "def-idyll",
+        "question": "What does “idyll” mean?",
+        "choices": [
+          "a short description of a peaceful or romantic scene",
+          "a crowded city street",
+          "a math formula",
+          "a long argument"
+        ],
+        "correctIndex": 0,
+        "explanation": "Idyll means a short description of a peaceful or romantic scene."
+      },
+      {
+        "id": "def-rote",
+        "question": "What does “rote” mean?",
+        "choices": [
+          "by carefully explaining",
+          "by experimenting and testing",
+          "by memorizing without understanding",
+          "by asking questions"
+        ],
+        "correctIndex": 2,
+        "explanation": "Rote means by memorizing without understanding."
+      },
+      {
+        "id": "def-rotunda",
+        "question": "What does “rotunda” mean?",
+        "choices": [
+          "a wooden bridge",
+          "a circular domed building or hall",
+          "a narrow tunnel",
+          "a tall tower with stairs"
+        ],
+        "correctIndex": 1,
+        "explanation": "Rotunda means a circular domed building or hall."
+      },
+      {
+        "id": "def-rotund",
+        "question": "What does “rotund” mean?",
+        "choices": [
+          "very noisy",
+          "plump; rounded",
+          "thin and sharp",
+          "broken into pieces"
+        ],
+        "correctIndex": 1,
+        "explanation": "Rotund means plump; rounded."
+      },
+      {
+        "id": "def-cavernous",
+        "question": "What does “cavernous” mean?",
+        "choices": [
+          "like a large cave; huge and hollow or dark",
+          "soft and fluffy",
+          "tiny and cramped",
+          "bright and shiny"
+        ],
+        "correctIndex": 0,
+        "explanation": "Cavernous means like a large cave; huge and hollow or dark."
+      },
+      {
+        "id": "def-concave",
+        "question": "What does “concave” mean?",
+        "choices": [
+          "curved inward, like the inside of a bowl",
+          "perfectly flat",
+          "curved outward",
+          "full of corners"
+        ],
+        "correctIndex": 0,
+        "explanation": "Concave means curved inward, like the inside of a bowl."
+      },
+      {
+        "id": "def-excavate",
+        "question": "What does “excavate” mean?",
+        "choices": [
+          "to paint over",
+          "to dig out; to make a hole by digging",
+          "to fold neatly",
+          "to melt with heat"
+        ],
+        "correctIndex": 1,
+        "explanation": "Excavate means to dig out; to make a hole by digging."
+      }
+    ],
+    "usageMCQs": [
+      {
+        "id": "use-feign",
+        "prompt": "Pick the sentence that uses “feign” correctly.",
+        "word": "feign",
+        "choices": [
+          "He tried to feign surprise, but we could tell he already knew.",
+          "We went feign to the park after school.",
+          "The feign of the soup was too salty.",
+          "She feigned the book into her backpack."
+        ],
+        "correctIndex": 0,
+        "explanation": "To feign means to pretend or fake something."
+      },
+      {
+        "id": "use-feint",
+        "prompt": "Pick the sentence that uses “feint” correctly.",
+        "word": "feint",
+        "choices": [
+          "The feint was delicious with syrup.",
+          "She feinted the homework onto the desk.",
+          "We wore feint coats in the rain.",
+          "The boxer used a feint to trick his opponent before throwing a punch."
+        ],
+        "correctIndex": 3,
+        "explanation": "A feint is a fake move meant to mislead."
+      },
+      {
+        "id": "use-effigy",
+        "prompt": "Pick the sentence that uses “effigy” correctly.",
+        "word": "effigy",
+        "choices": [
+          "The effigy of the sandwich was spicy.",
+          "He effigy the door closed with a slam.",
+          "The parade featured an effigy of the town’s founder.",
+          "She effigied the paper into small pieces."
+        ],
+        "correctIndex": 2,
+        "explanation": "An effigy is a sculpture or model that represents a person."
+      },
+      {
+        "id": "use-ideology",
+        "prompt": "Pick the sentence that uses “ideology” correctly.",
+        "word": "ideology",
+        "choices": [
+          "The ideology was painted bright blue.",
+          "Their ideology focused on fairness and equal rights for everyone.",
+          "He ideology the ball across the field.",
+          "We bought ideology at the grocery store."
+        ],
+        "correctIndex": 1,
+        "explanation": "Ideology means a set of beliefs or main ideas shared by a group."
+      },
+      {
+        "id": "use-idyll",
+        "prompt": "Pick the sentence that uses “idyll” correctly.",
+        "word": "idyll",
+        "choices": [
+          "The poem was an idyll about quiet farms and sunny fields.",
+          "The idyll barked all night.",
+          "She idyll the book to make it longer.",
+          "We idylled the music to make it louder."
+        ],
+        "correctIndex": 0,
+        "explanation": "An idyll is a peaceful scene or a short writing describing one."
+      },
+      {
+        "id": "use-rote",
+        "prompt": "Pick the sentence that uses “rote” correctly.",
+        "word": "rote",
+        "choices": [
+          "She rote the door open with a key.",
+          "We rode rote to school.",
+          "He learned the speech by rote, even though he didn’t understand every line.",
+          "The rote was a bright yellow flower."
+        ],
+        "correctIndex": 2,
+        "explanation": "Rote learning means memorizing without thinking about meaning."
+      },
+      {
+        "id": "use-rotunda",
+        "prompt": "Pick the sentence that uses “rotunda” correctly.",
+        "word": "rotunda",
+        "choices": [
+          "He rotunda the paper into four pieces.",
+          "The museum’s rotunda had a huge dome and echoed when people spoke.",
+          "The rotunda tasted sweet and crunchy.",
+          "She wore a rotunda to the party."
+        ],
+        "correctIndex": 1,
+        "explanation": "A rotunda is a round hall or building, often with a dome."
+      },
+      {
+        "id": "use-rotund",
+        "prompt": "Pick the sentence that uses “rotund” correctly.",
+        "word": "rotund",
+        "choices": [
+          "We rotunded the chairs into a circle.",
+          "The rotund of the story was very funny.",
+          "The rotund cat looked like a fluffy, round pillow.",
+          "He rotund the window shut with force."
+        ],
+        "correctIndex": 2,
+        "explanation": "Rotund means round or plump."
+      },
+      {
+        "id": "use-cavernous",
+        "prompt": "Pick the sentence that uses “cavernous” correctly.",
+        "word": "cavernous",
+        "choices": [
+          "The cavernous warehouse felt dark and empty inside.",
+          "We took a cavernous to the beach.",
+          "The cavernous of the sandwich was spicy.",
+          "She cavernous the pencil to make it sharper."
+        ],
+        "correctIndex": 0,
+        "explanation": "Cavernous describes something like a big cave—huge, hollow, or dark."
+      },
+      {
+        "id": "use-concave",
+        "prompt": "Pick the sentence that uses “concave” correctly.",
+        "word": "concave",
+        "choices": [
+          "We bought concave at the store.",
+          "The concave spoon held the soup without spilling.",
+          "The concave was painted bright blue.",
+          "He concave the ball into the goal."
+        ],
+        "correctIndex": 1,
+        "explanation": "Concave means curved inward, like the inside of a bowl."
+      },
+      {
+        "id": "use-excavate",
+        "prompt": "Pick the sentence that uses “excavate” correctly.",
+        "word": "excavate",
+        "choices": [
+          "The excavate tasted sweet and crunchy.",
+          "She excavate the lights to make them brighter.",
+          "We wore excavate jackets in the rain.",
+          "Archaeologists excavate carefully to avoid breaking old artifacts."
+        ],
+        "correctIndex": 3,
+        "explanation": "To excavate is to dig out, especially from the ground."
+      }
+    ]
   }
 ]
